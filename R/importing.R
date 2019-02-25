@@ -1,10 +1,8 @@
 require(data.table)
-source("R/Eyetracker/HelperEyetrackerFunctions.R")
 
 #what is n.calibrations, limit, n.event?
-parse.asc.file <- function(filepath, n.event = 3000, limit_lines = NULL, 
+parse.asc.file <- function(filepath, n.event = 3000, limit_lines = NULL,
                            n.calibrations = 500) {
-
   text <- readLines(filepath)
   eye <- GetEye(filepath);
   #finds indexes that start with MSG
@@ -12,18 +10,16 @@ parse.asc.file <- function(filepath, n.event = 3000, limit_lines = NULL,
   CAL_indexes <- grep('\\!CAL+.*',text)
   #removing calibration indexes from the MSG
   MSG_indexes <- MSG_indexes[!(MSG_indexes %in% CAL_indexes)]
-  
   events = ReadEvents(text[MSG_indexes],length(MSG_indexes))
   # calibrations = ReadCalibrations(lines[CAL_indexes],length(CAL_indexes))
-  
   DATA_indexes <- grep("^[0-9]+.*$", text)
   pseudo_file <- paste(text[DATA_indexes],collapse="\n")
-  dat <- fread(pseudo_file, header=F, col.names = c("Frame", "X", "Y", "Pupil", "NoIdea", "SomeDots"))
+  dat <- fread(pseudo_file, header=F, col.names = c("Frame", "X", "Y", "Pupil",
+                                                    "NoIdea", "SomeDots"))
   dat[, X:= as.double(X)]
   dat[, Y:= as.double(Y)]
   return_list <- list("events" = events, "data" = dat)
   return(return_list)
-  
 }
 
 clean.paf <- function(paf) {
@@ -40,7 +36,7 @@ clean.paf <- function(paf) {
     # ... removed
     # 3) keep better
     better <- min(x$error.avg)
-    x$preferred <- (x$error.avg == better) 
+    x$preferred <- (x$error.avg == better)
     if (sum(x$preferred) > 1) {
       # resolve tie
       best <- min(x$error.max[x$preferred])
@@ -55,7 +51,7 @@ clean.paf <- function(paf) {
   cal2 <- unique(cal[,c("calib.time","trial")])
   max.trial <- max(paf$records$trial)
   cal2$trial2 <- c(cal2$trial[-1],max.trial) # [-1] = without +1
-  cat("\n"); 
+  cat("\n");
   cal <- join(cal,cal2); rm(cal2)
   cal <- cal[,c(1,2,8,3:7)]
   cal$trial <- 1 + cal$trial
@@ -74,7 +70,7 @@ clean.paf <- function(paf) {
                                  eye == "right"))
     cat("\n", n.records, "L:", n.records.L, "P:",n.records.R,"out of",nrow(paf$records))
     # LEFT -- more left (only left?), left is better == > keep only left
-    if (n.records.L > n.records.R && any(cal1$eye=="LEFT")) {      
+    if (n.records.L > n.records.R && any(cal1$eye=="LEFT")) {
       paf$records <- subset(paf$records, !(trial %in% t1:t2) |
                               ((trial %in% t1:t2) & eye == "left"))
       cal$used[cal$calib.time == et & cal$eye == "LEFT"] <- T
@@ -85,7 +81,7 @@ clean.paf <- function(paf) {
       }
       stopifnot(nrow(paf$records) == n.all - n.records.R)
       next
-    } 
+    }
     # RIGHT -- more right (only right?), right is better == > keep only right
     if (n.records.L < n.records.R && any(cal1$eye=="RIGHT")) {
       paf$records <- subset(paf$records, !(trial %in% t1:t2) |
@@ -95,10 +91,10 @@ clean.paf <- function(paf) {
         warning("Not GOOD enough calibration for trials ",
                 t1,"-", t2,"(",
                 cal$rating[cal$calib.time == et & cal$eye == "RIGHT"],")")
-      }   
+      }
       stopifnot(nrow(paf$records) == n.all - n.records.L)
       next
-    } 
+    }
     # BOTH -- pick better
     if ((n.records.L == n.records.R) && any(cal1$preferred)) {
       if (sum(cal1$preferred)>1) {
@@ -116,19 +112,19 @@ clean.paf <- function(paf) {
         warning("Not GOOD enough calibration for trials ",
                 t1,"-", t2,"(",
                 cal$rating[cal$calib.time == et & cal$eye == eye1],")")
-      }  
+      }
       cat("\n",nrow(paf$records))
       stopifnot(nrow(paf$records) == n.all - n.records.R)
-      next      
+      next
     }
-    warning("We do not know what to pick??? trials=", t1,"-",t2, 
+    warning("We do not know what to pick??? trials=", t1,"-",t2,
             " (we have",nrow(cal1),"options)")
     if (nrow(cal1) == 1) {
       cal$used[cal$calib.time == et] <- T
     } else {
       cal$used[cal$calib.time == et] <- c(T,F)
     }
-    
+
   }
   paf$calibrations <- subset(cal, used, select=-preferred)
   return(paf)
@@ -142,7 +138,7 @@ correct.etime <- function(df, lag=50, fps=85) {
   m <- lm(etime ~ 1+offset(mtime), data=df)
   etime.predicted <- predict(m, df)
   lag1 <- df$etime - etime.predicted
-  
+
   df1 <- df[lag1 < lag,]
   if (nrow(df1)<5) {
     warning("Number of non-lagged records below 5.")
@@ -195,7 +191,7 @@ set.true.trajectory.times <- function(gdf, res) {
 
 load.results <- function(pattern, ids, path=".") {
   .data <- NULL
-  for (i in ids) {    
+  for (i in ids) {
     fn1 <- sprintf(pattern, i)
     fn1 <- file.path(path, fn1) # use platform independent separator
     .data1 <- read.csv(fn1, as.is=T)
@@ -207,7 +203,7 @@ load.results <- function(pattern, ids, path=".") {
 
 load.tracks <- function(pattern, tids, path=".") {
   .data <- NULL
-  for (ti in tids) {    
+  for (ti in tids) {
     fn1 <- sprintf(pattern, ti)
     fn1 <- file.path(path, fn1) # use platform idenpendent separator
     .data1 <- read.csv(fn1, as.is=T,sep="\t",header=F)
@@ -221,18 +217,17 @@ load.tracks <- function(pattern, tids, path=".") {
   return(.data)
 }
 
-load.gaze.1 <- function(id, results, template=NA, paf=NULL, 
-                        expected.trials=NULL) {
+load.gaze.1 <- function(id, results, template=NA, paf=NULL, expected.trials=NULL) {
   if (is.null(paf)) {
     fn = sprintf(template, id)
-    paf <- parse.asc.file(fn)    
+    paf <- parse.asc.file(fn)
   }
   d00 <- ddply(paf$events, .(param), correct.etime)
   #cat("\nTime mark error in ms:\n")
   rep1 <- ddply(d00, .(frame), summarize, sd=sd(mtime1*1000))
   rep1 <- subset(rep1, frame>0)
   print(rep1)
-  if (!is.null(expected.trials) & 
+  if (!is.null(expected.trials) &
         !setequal(unique(d00$param), expected.trials)) {
     stop(sprintf("Error: trial numbers do not match, read:%d [id:%d]",
                  length(unique(d00$param)),
@@ -250,7 +245,7 @@ load.gaze.1 <- function(id, results, template=NA, paf=NULL,
     stop(sprintf("results: id %d not found",id))
   }
   gdf <- ddply(paf$records, .(trial), update.gaze.times, d00)
-  gdf <- gdf[gdf$mtime1 >= 0 & gdf$mtime1 <= 10,]  
+  gdf <- gdf[gdf$mtime1 >= 0 & gdf$mtime1 <= 10,]
   gdf <- gdf[gdf$trial > 8,]
   gdf2 <- data.frame(id=id2, trial=gdf$trial, time=gdf$mtime1,
                      x=gdf$x, y=gdf$y, pupil=gdf$pupil)
@@ -268,8 +263,8 @@ print.experiment <- function(x) {
   # number of gaze samples
   cat("\n  # of gaze samples: ", nrow(x$gaze))
   # number of tracks
-  cat("\n  # of tracks:       ", length(unique(x$result$track)))  
+  cat("\n  # of tracks:       ", length(unique(x$result$track)))
   # list conditions
-  cat("\n  Conditions:        ", 
+  cat("\n  Conditions:        ",
       paste(sort(unique(as.character(x$result$cond))),sep=","))
 }

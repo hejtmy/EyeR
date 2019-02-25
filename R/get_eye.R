@@ -1,7 +1,7 @@
-get_eye <- function(file_path){
+get_eye <- function(filepath){
   #Starts reading the file
-  con = file(file_path, 'r');
-  
+  con <- file(filepath, 'r');
+
   while (length(oneLine <- readLines(con, n = 1, warn = FALSE)) > 0) {
     # SEARCHES FOR THE START INFORMATION
     # which eye we will record?
