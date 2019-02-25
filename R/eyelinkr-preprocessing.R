@@ -1,0 +1,58 @@
+#' Title
+#'
+#' @param df_events
+#' @param eyetracker
+#'
+#' @return
+#' @export
+#'
+#' @examples
+preprocess_eye_events <- function(df_events, eyetracker){
+  if(eyetracker == "SR 1000") return(SR1000.preprocess_eye_events(df_events))
+  return(eyetracker_not_found(eyetracker))
+}
+
+#' Title
+#'
+#' @param df_fixations
+#' @param eyetracker
+#'
+#' @return
+#' @export
+#'
+#' @examples
+preprocess_eye_fixations <- function(df_fixations, eyetracker){
+  if(eyetracker == "SR 1000") return(SR1000.preprocess_eye_fixations(df_fixations))
+  return(eyetracker_not_found(eyetracker))
+}
+
+#' Title
+#'
+#' @param df_fixations
+#' @param original_resolution
+#' @param target_resolution
+#'
+#' @return
+#' @export
+#'
+#' @examples
+change_resolution <- function(df_fixations, original_resolution, target_resolution){
+  df_fixations$position_x <- round(df_fixations$position_x/original_resolution$width * target_resolution$width)
+  df_fixations$position_y <- round(df_fixations$position_y/original_resolution$height * target_resolution$height)
+  return(df_fixations)
+}
+
+#' Title
+#'
+#' @param df_fixations
+#' @param disp_resolution
+#'
+#' @return
+#' @export
+#'
+#' @examples
+remove_outlier_fixations <- function(df_fixations, disp_resolution = list(width = 1920, height = 1080)){
+  df_fixations <- df_fixations[(df_fixations$position_x < disp_resolution$width) & (df_fixations$position_y < disp_resolution$height), ]
+  df_fixations <- df_fixations[df_fixations$position_x > 0 & df_fixations$position_y > 0, ]
+  return(df_fixations)
+}
