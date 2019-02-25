@@ -56,3 +56,22 @@ remove_outlier_fixations <- function(df_fixations, disp_resolution = list(width 
   df_fixations <- df_fixations[df_fixations$position_x > 0 & df_fixations$position_y > 0, ]
   return(df_fixations)
 }
+
+
+#' Title
+#'
+#' @param dt_fixations fixations
+#' @param areas list of area lists. Each area list is a list of X and y vectors of length 2 .Example of one area is list(x=c(0,10), y=c(0,10))
+#'
+#' @return
+#' @export
+#'
+#' @examples
+add_screen_area_fixations = function(dt_fixations, areas){
+  dt_fixations[, area := ""]
+  for (area in areas){
+    dt_fixations[is_between(pos_x, area$x[1], ar$x[2]) & is_between(pos_y, area$y[1], area$y[2]), area:= area$name]
+  }
+  return(dt_fixations)
+}
+
