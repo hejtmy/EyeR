@@ -1,14 +1,15 @@
-#' Title
+#' Loads data from a folder. Loads preprocessed events and fixations files,
+#' or raw files if override is set to TRUE or if there are no preprocessed files
 #'
-#' @param dir
-#' @param override
-#' @param eyetracker
+#' @param dir what directory should be searcher? Not recursive
+#' @param override should we delete and override existing preprocessed files?
+#' @param eyetracker what type of eyetrakcer was used? See readme for instructions
 #'
-#' @return
+#' @return EyerObject with filled in data
 #' @export
 #'
 #' @examples
-load_eyetracker_data <- function(dir, override, eyetracker="SR 1000 ASC"){
+load_eyetracker_data <- function(dir, override, eyetracker="SR 1000"){
   #checks if there are already computed files
   ls_filepaths <- find_preprocessed_files(dir)
   if (override) delete_preprocessed_files(ls_filepaths)
@@ -20,15 +21,15 @@ load_eyetracker_data <- function(dir, override, eyetracker="SR 1000 ASC"){
   if (!is_loaded(obj)){
     ls <- load_unprocessed_file(file)
   }
-  obj$resolution <- read_eye_resolution(ls$file)
+  obj$resolution <- read_resolution(ls$file)
   return(obj)
 }
 
-#' Title
+#' returns filepaths of preprocessed fixations and events
 #'
-#' @param dir
+#' @param dir what directory to search in? Expects one fixation and one event file to be present
 #'
-#' @return
+#' @return list with "fixations" and "events" fileds containing filepaths
 #' @export
 #'
 #' @examples
@@ -43,17 +44,17 @@ find_preprocessed_files <- function(dir){
 
 #' Finds and loads data from a directory
 #'
-#' @param dir
-#' @param type
+#' @param dir what directory to search in? Expects one file to be present
+#' @param eyetracker what type of eyetrakcer was used? See readme for instructions
 #'
-#' @return
+#' @return returns loaded data from load_unprocessed_file function
 #' @export
 #'
 #' @examples
-open_unprocessed_file <- function(dir, eyetracker="SR 1000 ASC"){
-  file <- find_unprocessed_file(dir, eyetracker)
-  data <- load_unprocessed_file(file, eyetracker)
-  return(list(file=file, data=data))
+open_unprocessed_file <- function(dir, eyetracker="SR 1000"){
+  filepath <- find_unprocessed_file(dir, eyetracker)
+  data <- load_unprocessed_file(filepath, eyetracker)
+  return(data)
 }
 
 #' Returns list of eyetracker files of given eyetracker
@@ -65,7 +66,7 @@ open_unprocessed_file <- function(dir, eyetracker="SR 1000 ASC"){
 #' @export
 #'
 #' @examples
-find_unprocessed_file <- function(dir, eyetracker="SR 1000 ASC"){
+find_unprocessed_file <- function(dir, eyetracker="SR 1000"){
   ptr <- paste(dir, ".asc", sep = "")
   filepath <- list.files(dir, pattern = ptr, full.names = T)
   if(!file.exists(filepath)){
@@ -75,10 +76,10 @@ find_unprocessed_file <- function(dir, eyetracker="SR 1000 ASC"){
   return(filepath)
 }
 
-#' Title
+#' Loads raw file and returns list with evens and fixations
 #'
-#' @param filepath
-#' @param type
+#' @param filepath path to the file
+#' @param eyetracker what type of eyetrakcer was used? See readme for instructions
 #'
 #' @return
 #' @export
@@ -90,7 +91,6 @@ load_unprocessed_file <- function(filepath, eyetracker="SR 1000"){
   fixations <- read_eye_fixations(filepath, eyetracker)
   return(ls(events=events, fixations=fixations))
 }
-
 
 load_preprocessed_files <- function(ls_filepaths){
   ls <- list(fixations=NULL, events=NULL)

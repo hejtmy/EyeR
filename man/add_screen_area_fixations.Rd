@@ -9,7 +9,7 @@ add_screen_area_fixations(dt_fixations, areas)
 \arguments{
 \item{dt_fixations}{fixations}
 
-\item{areas}{list of area lists. Each area list is a list of X and y vectors of length 2 .Example of one area is list(x=c(0,10), y=c(0,10))}
+\item{areas}{list of area lists. Each area list is a list of X and y vectors of length 2. Ex: list(x=c(0,10), y=c(0,10))}
 }
 \description{
 Title

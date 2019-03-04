@@ -2,13 +2,15 @@
 % Please edit documentation in R/eyer-readers.R
 \name{read_eye_events}
 \alias{read_eye_events}
-\title{Reads fixations from given file}
+\title{Reads events from given file}
 \usage{
 read_eye_events(filepath, eyetracker)
 }
 \arguments{
-\item{eyetracker}{eyetracker type}
+\item{filepath}{path to the raw file}
+
+\item{eyetracker}{which eyetrakcer was used? See readme for instructions}
 }
 \description{
-Reads fixations from given file
+Reads events from given file
 }

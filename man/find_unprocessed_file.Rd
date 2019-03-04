@@ -4,7 +4,7 @@
 \alias{find_unprocessed_file}
 \title{Returns list of eyetracker files of given eyetracker}
 \usage{
-find_unprocessed_file(dir, eyetracker = "SR 1000 ASC")
+find_unprocessed_file(dir, eyetracker = "SR 1000")
 }
 \arguments{
 \item{dir}{where to look for}

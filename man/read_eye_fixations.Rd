@@ -7,7 +7,9 @@
 read_eye_fixations(filepath, eyetracker)
 }
 \arguments{
-\item{eyetracker}{eyetracker type}
+\item{filepath}{path to the raw file}
+
+\item{eyetracker}{which eyetrakcer was used? See readme for instructions}
 }
 \description{
 Reads fixations from given file

@@ -2,14 +2,16 @@
 % Please edit documentation in R/eyer-preprocessing.R
 \name{remove_outlier_fixations}
 \alias{remove_outlier_fixations}
-\title{Title}
+\title{Removes fixations out of disp_resolution boundary}
 \usage{
 remove_outlier_fixations(df_fixations, disp_resolution = list(width =
   1920, height = 1080))
 }
 \arguments{
-\item{disp_resolution}{}
+\item{df_fixations}{fixation table}
+
+\item{disp_resolution}{defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)}
 }
 \description{
-Title
+Removes fixations out of disp_resolution boundary
 }

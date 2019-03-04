@@ -4,10 +4,15 @@
 \alias{open_unprocessed_file}
 \title{Finds and loads data from a directory}
 \usage{
-open_unprocessed_file(dir, eyetracker = "SR 1000 ASC")
+open_unprocessed_file(dir, eyetracker = "SR 1000")
 }
 \arguments{
-\item{type}{}
+\item{dir}{what directory to search in? Expects one file to be present}
+
+\item{eyetracker}{what type of eyetrakcer was used? See readme for instructions}
+}
+\value{
+returns loaded data from load_unprocessed_file function
 }
 \description{
 Finds and loads data from a directory

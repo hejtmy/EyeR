@@ -39,7 +39,7 @@ SR1000.read_eye_movements = function(text){
   return(dat)
 }
 
-SR1000.read_eye_calibrations <- function(text, ncal){
+SR1000.read_calibrations <- function(text, ncal){
   #will produce empty lines in the calibration
   calibrations <- data.frame(
     calib.time  = numeric(n.calibrations),
@@ -70,7 +70,7 @@ SR1000.read_eye_calibrations <- function(text, ncal){
 }
 
 #goes through the asc log and finds display options
-SR1000.read_eye_resolution = function(path){
+SR1000.read_resolution <- function(path){
   con = file(path, open = "r")
   disp_resolution = NULL
   # Needs <- assign becasue it doesn't work otherwise in the length function

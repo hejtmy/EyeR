@@ -28,9 +28,9 @@ preprocess_eye_fixations <- function(df_fixations, eyetracker){
 
 #' Title
 #'
-#' @param df_fixations
-#' @param original_resolution
-#' @param target_resolution
+#' @param df_fixations loaded table with fixations
+#' @param original_resolution defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)
+#' @param target_resolution defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)
 #'
 #' @return
 #' @export
@@ -42,10 +42,10 @@ change_resolution <- function(df_fixations, original_resolution, target_resoluti
   return(df_fixations)
 }
 
-#' Title
+#' Removes fixations out of disp_resolution boundary
 #'
-#' @param df_fixations
-#' @param disp_resolution
+#' @param df_fixations fixation table
+#' @param disp_resolution defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)
 #'
 #' @return
 #' @export
@@ -57,11 +57,10 @@ remove_outlier_fixations <- function(df_fixations, disp_resolution = list(width 
   return(df_fixations)
 }
 
-
 #' Title
 #'
 #' @param dt_fixations fixations
-#' @param areas list of area lists. Each area list is a list of X and y vectors of length 2 .Example of one area is list(x=c(0,10), y=c(0,10))
+#' @param areas list of area lists. Each area list is a list of X and y vectors of length 2. Ex: list(x=c(0,10), y=c(0,10))
 #'
 #' @return
 #' @export

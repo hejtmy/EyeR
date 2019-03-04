@@ -2,13 +2,15 @@
 % Please edit documentation in R/eyer-loading.R
 \name{load_unprocessed_file}
 \alias{load_unprocessed_file}
-\title{Title}
+\title{Loads raw file and returns list with evens and fixations}
 \usage{
 load_unprocessed_file(filepath, eyetracker = "SR 1000")
 }
 \arguments{
-\item{type}{}
+\item{filepath}{path to the file}
+
+\item{eyetracker}{what type of eyetrakcer was used? See readme for instructions}
 }
 \description{
-Title
+Loads raw file and returns list with evens and fixations
 }

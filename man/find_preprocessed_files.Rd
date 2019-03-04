@@ -2,13 +2,16 @@
 % Please edit documentation in R/eyer-loading.R
 \name{find_preprocessed_files}
 \alias{find_preprocessed_files}
-\title{Title}
+\title{returns filepaths of preprocessed fixations and events}
 \usage{
 find_preprocessed_files(dir)
 }
 \arguments{
-\item{dir}{}
+\item{dir}{what directory to search in? Expects one fixation and one event file to be present}
+}
+\value{
+list with "fixations" and "events" fileds containing filepaths
 }
 \description{
-Title
+returns filepaths of preprocessed fixations and events
 }

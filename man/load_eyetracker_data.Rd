@@ -2,13 +2,22 @@
 % Please edit documentation in R/eyer-loading.R
 \name{load_eyetracker_data}
 \alias{load_eyetracker_data}
-\title{Title}
+\title{Loads data from a folder. Loads preprocessed events and fixations files,
+or raw files if override is set to TRUE or if there are no preprocessed files}
 \usage{
-load_eyetracker_data(dir, override, eyetracker = "SR 1000 ASC")
+load_eyetracker_data(dir, override, eyetracker = "SR 1000")
 }
 \arguments{
-\item{eyetracker}{}
+\item{dir}{what directory should be searcher? Not recursive}
+
+\item{override}{should we delete and override existing preprocessed files?}
+
+\item{eyetracker}{what type of eyetrakcer was used? See readme for instructions}
+}
+\value{
+EyerObject with filled in data
 }
 \description{
-Title
+Loads data from a folder. Loads preprocessed events and fixations files,
+or raw files if override is set to TRUE or if there are no preprocessed files
 }
