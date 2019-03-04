@@ -12,7 +12,7 @@ load_eyetracker_data <- function(dir, override, eyetracker="SR 1000 ASC"){
   #checks if there are already computed files
   ls_filepaths <- find_preprocessed_files(dir)
   if (override) delete_preprocessed_files(ls_filepaths)
-  obj <- EyelinkrObject()
+  obj <- EyerObject()
   obj$data <- load_preprocessed_files(ls_filepaths)
   #if we are still missing some data we recompute it
 

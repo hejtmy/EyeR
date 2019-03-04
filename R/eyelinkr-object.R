@@ -1,14 +1,14 @@
-#' Returns empty eyelinkr object
+#' Returns empty eyer object
 #'
-#' @return Eyelinkr object
+#' @return EyeR object
 #' @export
 #'
 #' @examples
-EyelinkrObject <- function(){
+EyerObject <- function(){
   obj <- list()
   obj$data <- list()
   obj$data$events <- NULL
   obj$data$fixations <- NULL
-  class(obj) <- append(class(obj), "eyelinkr")
+  class(obj) <- append(class(obj), "eyer")
   return(obj)
 }

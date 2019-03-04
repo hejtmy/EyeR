@@ -1,4 +1,4 @@
 library(testthat)
-library(eyelinkr)
+library(eyer)
 
-test_check("eyelinkr")
+test_check("eyer")

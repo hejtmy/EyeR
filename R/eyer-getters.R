@@ -18,6 +18,6 @@ is_data_loaded <- function(obj){
 #' @export
 #'
 #' @examples
-is_data_loaded.eyelinkr <- function(obj){
+is_data_loaded.eyer <- function(obj){
   return(!((is.null(obj$events)) | (is.null(obj$fixations))))
 }

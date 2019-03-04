@@ -1,4 +1,4 @@
-Package: eyelinkr
+Package: eyer
 Type: Package
 Title: Loading and preprocessing of eyetrakcer data
 Version: 0.1.0
@@ -14,3 +14,5 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
