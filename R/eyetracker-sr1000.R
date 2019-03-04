@@ -69,10 +69,36 @@ SR1000.read_calibrations <- function(text, ncal){
   return(calibrations)
 }
 
+SR1000.read_which_eye <- function(filepath){
+  #Starts reading the file
+  con <- file(filepath, 'r');
+  while (length(oneLine <- readLines(con, n = 1, warn = FALSE)) > 0) {
+    # SEARCHES FOR THE START INFORMATION
+    # which eye we will record?
+    if (grepl("^START", oneLine)) {
+      eye <- "unknown"
+      if (grepl("LEFT", oneLine)) {
+        eye <- "left"
+      }
+      if (grepl("RIGHT", oneLine)) {
+        if (eye == "left") {
+          eye <- "both"
+        } else {
+          eye <- "right"
+        }
+      }
+      close(con)
+      return(eye)
+    }
+  }
+  close(con)
+  return("unknown")
+}
+
 #goes through the asc log and finds display options
-SR1000.read_resolution <- function(path){
-  con = file(path, open = "r")
-  disp_resolution = NULL
+SR1000.read_resolution <- function(filepath){
+  con <- file(filepath, open = "r")
+  disp_resolution <- NULL
   # Needs <- assign becasue it doesn't work otherwise in the length function
   while (length(line <- readLines(con, n = 1, warn = FALSE)) > 0) {
     # EXAMPLE = MSG	21256557 DISPLAY_COORDS 0 0 1919 1079
