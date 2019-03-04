@@ -2,13 +2,20 @@
 % Please edit documentation in R/eyer-preprocessing.R
 \name{preprocess_eye_fixations}
 \alias{preprocess_eye_fixations}
-\title{Title}
+\title{Preprocesses loaded fixations. This usually means adding columns or recalculating
+values that are not not well read}
 \usage{
 preprocess_eye_fixations(df_fixations, eyetracker)
 }
 \arguments{
-\item{eyetracker}{}
+\item{df_fixations}{data.frame with fixations loaded}
+
+\item{eyetracker}{which eyetracker was used. See readme for more information.}
+}
+\value{
+dataframe with generic preprocessing defined for given eyetracker
 }
 \description{
-Title
+Preprocesses loaded fixations. This usually means adding columns or recalculating
+values that are not not well read
 }

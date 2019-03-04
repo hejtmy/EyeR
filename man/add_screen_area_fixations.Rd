@@ -2,15 +2,18 @@
 % Please edit documentation in R/eyer-preprocessing.R
 \name{add_screen_area_fixations}
 \alias{add_screen_area_fixations}
-\title{Title}
+\title{Adds new column to the fixations data frame with information about a fixation
+being within area bounds}
 \usage{
-add_screen_area_fixations(dt_fixations, areas)
+add_screen_area_fixations(df_fixations, areas)
 }
 \arguments{
-\item{dt_fixations}{fixations}
+\item{df_fixations}{fixations}
 
-\item{areas}{list of area lists. Each area list is a list of X and y vectors of length 2. Ex: list(x=c(0,10), y=c(0,10))}
+\item{areas}{list of area lists. Each area list is a list of X and y vectors
+of length 2. Ex: list(x=c(0,10), y=c(0,10))}
 }
 \description{
-Title
+Adds new column to the fixations data frame with information about a fixation
+being within area bounds
 }

@@ -1,6 +1,6 @@
-#' Title
+#' Reads and cleans events
 #'
-#' @param df_events
+#' @param df_events data frame with events loaded
 #' @param eyetracker
 #'
 #' @return
@@ -12,12 +12,13 @@ preprocess_eye_events <- function(df_events, eyetracker){
   return(eyetracker_not_found(eyetracker))
 }
 
-#' Title
+#' Preprocesses loaded fixations. This usually means adding columns or recalculating
+#' values that are not not well read
 #'
-#' @param df_fixations
-#' @param eyetracker
+#' @param df_fixations data.frame with fixations loaded
+#' @param eyetracker which eyetracker was used. See readme for more information.
 #'
-#' @return
+#' @return dataframe with generic preprocessing defined for given eyetracker
 #' @export
 #'
 #' @examples
@@ -29,10 +30,12 @@ preprocess_eye_fixations <- function(df_fixations, eyetracker){
 #' Title
 #'
 #' @param df_fixations loaded table with fixations
-#' @param original_resolution defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)
-#' @param target_resolution defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)
+#' @param original_resolution defined as a list with width and height in pixesls.
+#' Ex: list(width=1920, height=1080)
+#' @param target_resolution defined as a list with width and height in pixesls.
+#' Ex: list(width=1920, height=1080)
 #'
-#' @return
+#' @return data frame with fixations with changed resolution. Can still yield out of bounds
 #' @export
 #'
 #' @examples
@@ -45,32 +48,37 @@ change_resolution <- function(df_fixations, original_resolution, target_resoluti
 #' Removes fixations out of disp_resolution boundary
 #'
 #' @param df_fixations fixation table
-#' @param disp_resolution defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)
+#' @param disp_resolution defined as a list with width and height in pixesls.
+#' Ex: list(width=1920, height=1080)
 #'
 #' @return
 #' @export
 #'
 #' @examples
-remove_outlier_fixations <- function(df_fixations, disp_resolution = list(width = 1920, height = 1080)){
-  df_fixations <- df_fixations[(df_fixations$position_x < disp_resolution$width) & (df_fixations$position_y < disp_resolution$height), ]
+remove_out_of_bounds_fixations <- function(df_fixations, disp_resolution = list(width = 1920, height = 1080)){
+  df_fixations <- df_fixations[(df_fixations$position_x < disp_resolution$width) &
+                                 (df_fixations$position_y < disp_resolution$height), ]
   df_fixations <- df_fixations[df_fixations$position_x > 0 & df_fixations$position_y > 0, ]
   return(df_fixations)
 }
 
-#' Title
+#' Adds new column to the fixations data frame with information about a fixation
+#' being within area bounds
 #'
-#' @param dt_fixations fixations
-#' @param areas list of area lists. Each area list is a list of X and y vectors of length 2. Ex: list(x=c(0,10), y=c(0,10))
+#' @param df_fixations fixations
+#' @param areas list of area lists. Each area list is a list of X and y vectors
+#' of length 2. Ex: list(x=c(0,10), y=c(0,10))
 #'
 #' @return
 #' @export
 #'
 #' @examples
-add_screen_area_fixations = function(dt_fixations, areas){
-  dt_fixations[, area := ""]
+add_screen_area_fixations <- function(df_fixations, areas){
+  #TODO - this is not working
+  df_fixations$area <- ""
   for (area in areas){
-    dt_fixations[is_between(pos_x, area$x[1], ar$x[2]) & is_between(pos_y, area$y[1], area$y[2]), area:= area$name]
+    df_fixations[is_between(df_fixations$position_x, area$x[1], ar$x[2]) & is_between(df_fixations$position_y, area$y[1], area$y[2]), "area"] <- area$name
   }
-  return(dt_fixations)
+  return(df_fixations)
 }
 

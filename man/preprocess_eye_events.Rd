@@ -2,13 +2,15 @@
 % Please edit documentation in R/eyer-preprocessing.R
 \name{preprocess_eye_events}
 \alias{preprocess_eye_events}
-\title{Title}
+\title{Reads and cleans events}
 \usage{
 preprocess_eye_events(df_events, eyetracker)
 }
 \arguments{
+\item{df_events}{data frame with events loaded}
+
 \item{eyetracker}{}
 }
 \description{
-Title
+Reads and cleans events
 }

@@ -9,9 +9,14 @@ change_resolution(df_fixations, original_resolution, target_resolution)
 \arguments{
 \item{df_fixations}{loaded table with fixations}
 
-\item{original_resolution}{defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)}
+\item{original_resolution}{defined as a list with width and height in pixesls.
+Ex: list(width=1920, height=1080)}
 
-\item{target_resolution}{defined as a list with width and height in pixesls. Ex: list(width=1920, height=1080)}
+\item{target_resolution}{defined as a list with width and height in pixesls.
+Ex: list(width=1920, height=1080)}
+}
+\value{
+data frame with fixations with changed resolution. Can still yield out of bounds
 }
 \description{
 Title
