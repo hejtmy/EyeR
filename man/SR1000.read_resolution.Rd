@@ -5,7 +5,7 @@
 \title{match two digits at least three digit long after Display coords
 ? signifies non greedy match (as least as possible)}
 \usage{
-SR1000.read_resolution(path)
+SR1000.read_resolution(filepath)
 }
 \description{
 match two digits at least three digit long after Display coords
