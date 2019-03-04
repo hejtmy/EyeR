@@ -89,18 +89,18 @@ load_unprocessed_file <- function(filepath, eyetracker="SR 1000"){
   #check for log existance
   events <- read_eye_events(filepath, eyetracker)
   fixations <- read_eye_fixations(filepath, eyetracker)
-  return(ls(events=events, fixations=fixations))
+  return(list(events=events, fixations=fixations))
 }
 
 load_preprocessed_files <- function(ls_filepaths){
   ls <- list(fixations=NULL, events=NULL)
   if(file.exists(ls_filepaths$fixations)) {
     SmartPrint(c("Loading preprocessed fixations log", ls_filepaths$fixation))
-    fixations <- fread(ls_filepaths$fixation, sep=";", header = T)
+    fixations <- read.table(ls_filepaths$fixation, sep=";", header = T)
   }
   if(file.exists(ls_filepaths$fixations)){
     SmartPrint(c("Loading preprocessed events log", ls_filepaths$events))
-    events <- fread(ls_filepaths$events, sep=";", header = T)
+    events <- read.table(ls_filepaths$events, sep=";", header = T)
   }
   return(ls)
 }

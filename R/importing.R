@@ -1,5 +1,3 @@
-require(data.table)
-
 #what is n.calibrations, limit, n.event?
 parse.asc.file <- function(filepath, n.event = 3000, limit_lines = NULL,
                            n.calibrations = 500) {
