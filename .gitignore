@@ -1,4 +1,8 @@
 inst/doc
+
+#temporary
+inst/extdata/test-pupil-lab
+
 # History files
 .Rhistory
 .Rapp.history
