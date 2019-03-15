@@ -1,6 +1,6 @@
 ---
 title: "Main vignette"
-author: "Lukáš 'hejtmy' Hejtmánek""
+author: "Lukáš 'hejtmy' Hejtmánek"
 date: "`r Sys.Date()`"
 output: html_document
 ---
