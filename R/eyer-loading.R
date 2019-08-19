@@ -15,31 +15,14 @@ load_eyetracker_data <- function(dir, override, eyetracker="SR 1000", ...){
   if (override) delete_preprocessed_files(ls_filepaths)
   obj <- EyerObject()
   obj$data <- load_preprocessed_files(ls_filepaths)
-  #if we are still missing some data we recompute it
 
+  #if we are still missing some data we recompute it
   file <- find_unprocessed_file(dir)
   if (!is_loaded(obj)){
     ls <- load_unprocessed_file(file)
   }
   obj$resolution <- read_resolution(ls$file)
   return(obj)
-}
-
-#' returns filepaths of preprocessed fixations and events
-#'
-#' @param dir what directory to search in? Expects one fixation and one event file to be present
-#'
-#' @return list with "fixations" and "events" fileds containing filepaths
-#' @export
-#'
-#' @examples
-find_preprocessed_files <- function(dir){
-  #actually search for it
-  ptr <- paste(dir, file, "_eyer_fixations.txt", sep = "")
-  fixations_filepath <- list.files(dir, pattern = ptr, full.names = T)
-  ptr <- paste(dir, file, "_eyer_events.txt", sep = "")
-  events_filepath <- list.files(dir, pattern = ptr, full.names = T)
-  return(list(fixations=fixations_filepath, events=events_filepath))
 }
 
 #' Finds and loads data from a directory
@@ -57,25 +40,6 @@ open_unprocessed_file <- function(dir, eyetracker="SR 1000"){
   return(data)
 }
 
-#' Returns list of eyetracker files of given eyetracker
-#'
-#' @param dir where to look for
-#' @param eyetracker what eyetracker file are we dealing with
-#'
-#' @return
-#' @export
-#'
-#' @examples
-find_unprocessed_file <- function(dir, eyetracker="SR 1000"){
-  ptr <- paste(dir, ".asc", sep = "")
-  filepath <- list.files(dir, pattern = ptr, full.names = T)
-  if(!file.exists(filepath)){
-    warning("There is no log in destination")
-    return(NULL)
-  }
-  return(filepath)
-}
-
 #' Loads raw file and returns list with evens and fixations
 #'
 #' @param filepath path to the file
@@ -90,6 +54,38 @@ load_unprocessed_file <- function(filepath, eyetracker="SR 1000"){
   events <- read_eye_events(filepath, eyetracker)
   fixations <- read_eye_fixations(filepath, eyetracker)
   return(list(events=events, fixations=fixations))
+}
+
+#' returns filepaths of preprocessed fixations and events
+#'
+#' @param dir what directory to search in? Expects one fixation and one event file to be present
+#'
+#' @return list with "fixations" and "events" fileds containing filepaths
+#' @examples
+find_preprocessed_files <- function(dir){
+  #actually search for it
+  ptr <- paste(dir, file, "_eyer_fixations.txt", sep = "")
+  fixations_filepath <- list.files(dir, pattern = ptr, full.names = T)
+  ptr <- paste(dir, file, "_eyer_events.txt", sep = "")
+  events_filepath <- list.files(dir, pattern = ptr, full.names = T)
+  return(list(fixations=fixations_filepath, events=events_filepath))
+}
+
+#' Returns list of eyetracker files of given eyetracker
+#'
+#' @param dir where to look for
+#' @param eyetracker what eyetracker file are we dealing with
+#'
+#' @return
+#' @examples
+find_unprocessed_file <- function(dir, eyetracker="SR 1000"){
+  ptr <- paste(dir, ".asc", sep = "")
+  filepath <- list.files(dir, pattern = ptr, full.names = T)
+  if(!file.exists(filepath)){
+    warning("There is no log in destination")
+    return(NULL)
+  }
+  return(filepath)
 }
 
 load_preprocessed_files <- function(ls_filepaths){

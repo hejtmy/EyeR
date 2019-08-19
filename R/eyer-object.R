@@ -25,10 +25,10 @@
 EyerObject <- function(){
   obj <- list()
   obj$data <- list()
-  obj$data$events <- NULL
-  obj$data$fixations <- NULL
-  obj$start_time <- NULL
-  obj$eyetracker <- NULL
+  obj$data$events <- data.frame()
+  obj$data$fixations <- data.frame()
+  obj$start_time <- numeric(0)
+  obj$eyetracker <- character(0)
   obj$settings <- list()
   class(obj) <- append(class(obj), "eyer")
   return(obj)
