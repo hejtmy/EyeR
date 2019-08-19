@@ -1,4 +1,4 @@
-context('loading')
+context('visualising')
 
 DIR <- system.file("extdata", package = "eyer")
 FILEPATH <- paste0(DIR, "/test-file-SR1000.asc")

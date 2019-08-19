@@ -5,10 +5,10 @@
 \title{Loads data from a folder. Loads preprocessed events and fixations files,
 or raw files if override is set to TRUE or if there are no preprocessed files}
 \usage{
-load_eyetracker_data(dir, override, eyetracker = "SR 1000")
+load_eyetracker_data(folder, override, eyetracker = "SR 1000", ...)
 }
 \arguments{
-\item{dir}{what directory should be searcher? Not recursive}
+\item{folder}{what directory should be searcher? Not recursive}
 
 \item{override}{should we delete and override existing preprocessed files?}
 
