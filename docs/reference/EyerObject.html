@@ -43,9 +43,15 @@ EyerObject has the following fields
 data
 events
 fixations
+pupil
 gaze
 
+start_time: start time of the first recording in datetime
+eyetracker: string with name of the recording device
+settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 " />
+
+<meta property="og:description" content="Fixations have an obligatory columns: timestamps (s since start), position_X, position_y" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -137,9 +143,15 @@ and Python packages.</p>
 <li><p>data</p><ul>
 <li><p>events</p></li>
 <li><p>fixations</p></li>
+<li><p>pupil</p></li>
 <li><p>gaze</p></li>
 </ul></li>
+<li><p>start_time: start time of the first recording in datetime</p></li>
+<li><p>eyetracker: string with name of the recording device</p></li>
+<li><p>settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.</p></li>
 </ul>
+
+    <p>Fixations have an obligatory columns: timestamps (s since start), position_X, position_y</p>
     
     </div>
 
@@ -147,7 +159,7 @@ and Python packages.</p>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EyeR object</p>
+    <p>eyer object</p>
     
 
   </div>

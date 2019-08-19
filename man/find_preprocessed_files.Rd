@@ -4,10 +4,10 @@
 \alias{find_preprocessed_files}
 \title{returns filepaths of preprocessed fixations and events}
 \usage{
-find_preprocessed_files(dir)
+find_preprocessed_files(folder)
 }
 \arguments{
-\item{dir}{what directory to search in? Expects one fixation and one event file to be present}
+\item{folder}{what directory to search in? Expects one fixation and one event to be present}
 }
 \value{
 list with "fixations" and "events" fileds containing filepaths
