@@ -32,7 +32,7 @@ load_eyetracker_data <- function(folder, override, eyetracker="SR 1000", ...){
 #' @export
 #'
 #' @examples
-open_unprocessed_file <- function(folder, eyetracker="SR 1000"){
+open_unprocessed_file <- function(folder, eyetracker = "SR 1000"){
   filepath <- find_unprocessed_file(folder, eyetracker)
   data <- load_unprocessed_file(filepath, eyetracker)
   return(data)
