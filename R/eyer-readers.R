@@ -8,6 +8,7 @@ read_eye_events <- function(filepath, eyetracker){
   if(eyetracker == "SR 1000") events <- SR1000.read_eye_events(text)
   return(events)
 }
+
 #' Reads fixations from given file
 #'
 #' @param filepath path to the raw file

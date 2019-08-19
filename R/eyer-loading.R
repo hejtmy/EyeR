@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-load_eyetracker_data <- function(dir, override, eyetracker="SR 1000"){
+load_eyetracker_data <- function(dir, override, eyetracker="SR 1000", ...){
   #checks if there are already computed files
   ls_filepaths <- find_preprocessed_files(dir)
   if (override) delete_preprocessed_files(ls_filepaths)
@@ -35,9 +35,9 @@ load_eyetracker_data <- function(dir, override, eyetracker="SR 1000"){
 #' @examples
 find_preprocessed_files <- function(dir){
   #actually search for it
-  ptr <- paste(dir, file, "_fixations.txt", sep = "")
+  ptr <- paste(dir, file, "_eyer_fixations.txt", sep = "")
   fixations_filepath <- list.files(dir, pattern = ptr, full.names = T)
-  ptr <- paste(dir, file, "_events.txt", sep = "")
+  ptr <- paste(dir, file, "_eyer_events.txt", sep = "")
   events_filepath <- list.files(dir, pattern = ptr, full.names = T)
   return(list(fixations=fixations_filepath, events=events_filepath))
 }

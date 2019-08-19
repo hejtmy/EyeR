@@ -15,7 +15,9 @@
 #'    - events
 #'    - fixations
 #'    - gaze
-#'
+#' - start_time: start time of the first recording in datetime
+#' - eyetracker: string with name of the recording device
+#' - settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 #' @return EyeR object
 #' @export
 #'
@@ -25,6 +27,9 @@ EyerObject <- function(){
   obj$data <- list()
   obj$data$events <- NULL
   obj$data$fixations <- NULL
+  obj$start_time <- NULL
+  obj$eyetracker <- NULL
+  obj$settings <- list()
   class(obj) <- append(class(obj), "eyer")
   return(obj)
 }
