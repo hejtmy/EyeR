@@ -7,7 +7,7 @@
 EyerObject()
 }
 \value{
-EyeR object
+eyer object
 }
 \description{
 EyerObject is a list with predetermined fields for consistent functioning of other
@@ -24,10 +24,13 @@ EyerObject has the following fields
 \itemize{
 \item events
 \item fixations
+\item pupil
 \item gaze
 }
 \item start_time: start time of the first recording in datetime
 \item eyetracker: string with name of the recording device
 \item settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 }
+
+Fixations have an obligatory columns: timestamps (s since start), position_X, position_y
 }
