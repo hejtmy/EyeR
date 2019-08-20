@@ -28,9 +28,10 @@ EyerObject has the following fields
 \item gaze
 }
 \item start_time: start time of the first recording in datetime
+\item resolution: monitor resolution
 \item eyetracker: string with name of the recording device
 \item settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 }
 
-Fixations have an obligatory columns: timestamps (s since start), position_X, position_y
+Fixations have an obligatory columns: timestamps (s since start), x, y
 }

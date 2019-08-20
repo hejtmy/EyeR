@@ -17,10 +17,11 @@
 #'    - pupil
 #'    - gaze
 #' - start_time: start time of the first recording in datetime
+#' - resolution: monitor resolution
 #' - eyetracker: string with name of the recording device
 #' - settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 #'
-#' Fixations have an obligatory columns: timestamps (s since start), position_X, position_y
+#' Fixations have an obligatory columns: timestamps (s since start), x, y
 #'
 #' @return eyer object
 #' @export
@@ -31,8 +32,10 @@ EyerObject <- function(){
   obj$data <- list()
   obj$data$events <- data.frame()
   obj$data$fixations <- data.frame()
+  obj$data$gaze <- data.frame()
   obj$start_time <- numeric(0)
   obj$eyetracker <- character(0)
+  obj$resolution <- list()
   obj$settings <- list()
   class(obj) <- append(class(obj), "eyer")
   return(obj)

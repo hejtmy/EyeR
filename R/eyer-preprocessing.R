@@ -40,8 +40,8 @@ preprocess_eye_fixations <- function(df_fixations, eyetracker){
 #'
 #' @examples
 change_resolution <- function(df_fixations, original_resolution, target_resolution){
-  df_fixations$position_x <- round(df_fixations$position_x/original_resolution$width * target_resolution$width)
-  df_fixations$position_y <- round(df_fixations$position_y/original_resolution$height * target_resolution$height)
+  df_fixations$x <- round(df_fixations$x/original_resolution$width * target_resolution$width)
+  df_fixations$y <- round(df_fixations$y/original_resolution$height * target_resolution$height)
   return(df_fixations)
 }
 
@@ -56,9 +56,9 @@ change_resolution <- function(df_fixations, original_resolution, target_resoluti
 #'
 #' @examples
 remove_out_of_bounds_fixations <- function(df_fixations, disp_resolution = list(width = 1920, height = 1080)){
-  df_fixations <- df_fixations[(df_fixations$position_x < disp_resolution$width) &
-                                 (df_fixations$position_y < disp_resolution$height), ]
-  df_fixations <- df_fixations[df_fixations$position_x > 0 & df_fixations$position_y > 0, ]
+  df_fixations <- df_fixations[(df_fixations$x < disp_resolution$width) &
+                                 (df_fixations$y < disp_resolution$height), ]
+  df_fixations <- df_fixations[df_fixations$x > 0 & df_fixations$y > 0, ]
   return(df_fixations)
 }
 
@@ -77,7 +77,8 @@ add_screen_area_fixations <- function(df_fixations, areas){
   #TODO - this is not working
   df_fixations$area <- ""
   for (area in areas){
-    df_fixations[is_between(df_fixations$position_x, area$x[1], ar$x[2]) & is_between(df_fixations$position_y, area$y[1], area$y[2]), "area"] <- area$name
+    df_fixations[is_between(df_fixations$x, area$x[1], ar$x[2]) &
+                   is_between(df_fixations$y, area$y[1], area$y[2]), "area"] <- area$name
   }
   return(df_fixations)
 }
