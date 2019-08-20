@@ -21,7 +21,7 @@
 #' - eyetracker: string with name of the recording device
 #' - settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 #'
-#' Fixations have an obligatory columns: timestamps (s since start), x, y
+#' Fixations have an obligatory columns: time (s since start), x, y, duration
 #'
 #' @return eyer object
 #' @export
@@ -40,3 +40,42 @@ EyerObject <- function(){
   class(obj) <- append(class(obj), "eyer")
   return(obj)
 }
+
+
+#' Returns if passed object is valid eyer object
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @examples
+is_valid_eyer <- function(obj){
+  if(!("eyer" %in% attributes(obj)$class)){
+    warning("object doesn't have eyer class")
+    return(FALSE)
+  }
+  if(length(obj$start_time) != 1){
+    warning("object doesn't have valid start time")
+    return(FALSE)
+  }
+  ## FIXATIONS
+  # Chcks validity of fixations in case there is one
+  if(nrow(obj$data$fixations) > 0){
+    required_fixation_columns <- c("x", "y", "time", "duration")
+    if(!all(required_fixation_columns %in% names(obj$data$fixations))){
+      warning("fixations don't have required", required_fixation_columns, " columns")
+      return(FALSE)
+    }
+  }
+  ## GAZE
+  if(nrow(obj$data$gaze) > 0){
+    required_gaze_columns <- c("x", "y", "time")
+    if(!all(required_gaze_columns %in% names(obj$data$gaze))){
+      warning("gaze positions don't have required", required_gaze_columns, " columns")
+      return(FALSE)
+    }
+  }
+  return(TRUE)
+}
+

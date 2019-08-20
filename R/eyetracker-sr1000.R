@@ -11,6 +11,8 @@ SR1000.read_eye_fixations <- function(text){
   text <- paste(lines, sep="", collapse="\n")
   tab <- read.table(text = text, sep = "\t", header = F)
   colnames(tab) <- c("start", "end", "no_idea_1", "x", "y", "no_idea_2")
+  tab$duration <- tab$end - tab$start
+  tab$time <- (tab$start - tab$start[1])/1000
   return(tab)
 }
 

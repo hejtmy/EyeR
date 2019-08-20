@@ -74,7 +74,7 @@ find_preprocessed_files <- function(folder){
 #'
 #' @return
 #' @examples
-find_unprocessed_file <- function(folder, eyetracker="SR 1000"){
+find_unprocessed_file <- function(folder, eyetracker = "SR 1000"){
   filepath <- find_file_or_null(folder, ".asc")
   if(is.null(filepath) || !file.exists(filepath)){
     warning("There is no log in destination ", folder)
@@ -100,11 +100,11 @@ find_file_or_null <- function(folder, ptr, allow_multiples = F){
 load_preprocessed_files <- function(ls_filepaths){
   ls <- list(fixations = data.frame(), events = data.frame())
   if(!is.null(ls_filepaths$fixations) && file.exists(ls_filepaths$fixations)) {
-    SmartPrint(c("Loading preprocessed fixations log", ls_filepaths$fixation))
+    cat("Loading preprocessed fixations log", ls_filepaths$fixation)
     fixations <- read.table(ls_filepaths$fixation, sep = ";", header = T)
   }
   if(!is.null(ls_filepaths$events) && file.exists(ls_filepaths$events)){
-    SmartPrint(c("Loading preprocessed events log", ls_filepaths$events))
+    cat("Loading preprocessed events log", ls_filepaths$events)
     events <- read.table(ls_filepaths$events, sep = ";", header = T)
   }
   return(ls)
@@ -112,11 +112,11 @@ load_preprocessed_files <- function(ls_filepaths){
 
 delete_preprocessed_files <- function(ls_filepaths){
   if(file.exists(ls_filepaths$fixations)) {
-    SmartPrint(c("Removing preprocessed fixations log", ls_filepaths$fixations))
+    cat("Removing preprocessed fixations log", ls_filepaths$fixations)
     file.remove(ls_filepaths$fixations)
   }
   if(file.exists(ls_filepaths$events)) {
-    SmartPrint(c("Removing preprocessed events log", ls_filepaths$events))
+    cat("Removing preprocessed events log", ls_filepaths$events)
     file.remove(ls_filepaths$events)
   }
 }

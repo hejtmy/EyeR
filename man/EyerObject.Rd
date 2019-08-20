@@ -33,5 +33,5 @@ EyerObject has the following fields
 \item settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
 }
 
-Fixations have an obligatory columns: timestamps (s since start), x, y
+Fixations have an obligatory columns: time (s since start), x, y, duration
 }
