@@ -43,15 +43,17 @@ EyerObject has the following fields
 data
 events
 fixations
-pupil
+diameter
 gaze
 
+info: list with eyetracker specific settings, suhc as recording frequency, recorded eye etc.
 start_time: start time of the first recording in datetime
+resolution: monitor resolution as a list with width, height fields
 eyetracker: string with name of the recording device
-settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
+
 " />
 
-<meta property="og:description" content="Fixations have an obligatory columns: timestamps (s since start), position_X, position_y" />
+<meta property="og:description" content="Fixations have an obligatory columns: time (s since start), x, y, duration" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -143,15 +145,17 @@ and Python packages.</p>
 <li><p>data</p><ul>
 <li><p>events</p></li>
 <li><p>fixations</p></li>
-<li><p>pupil</p></li>
+<li><p>diameter</p></li>
 <li><p>gaze</p></li>
 </ul></li>
+<li><p>info: list with eyetracker specific settings, suhc as recording frequency, recorded eye etc.</p><ul>
 <li><p>start_time: start time of the first recording in datetime</p></li>
+<li><p>resolution: monitor resolution as a list with width, height fields</p></li>
 <li><p>eyetracker: string with name of the recording device</p></li>
-<li><p>settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.</p></li>
+</ul></li>
 </ul>
 
-    <p>Fixations have an obligatory columns: timestamps (s since start), position_X, position_y</p>
+    <p>Fixations have an obligatory columns: time (s since start), x, y, duration</p>
     
     </div>
 

@@ -133,7 +133,7 @@ being within area bounds</p></td>
         <td>
           <p><code><a href="change_resolution.html">change_resolution()</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Changes object resolution</p></td>
       </tr><tr>
         
         <td>
@@ -174,83 +174,15 @@ returns index of first matchin eye event</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="find_unprocessed_file.html">find_unprocessed_file()</a></code> </p>
+          <p><code><a href="is_valid_eyer.html">is_valid_eyer()</a></code> </p>
         </td>
-        <td><p>Returns list of eyetracker files of given eyetracker</p></td>
+        <td><p>Returns if passed object is valid eyer object</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="is_data_loaded.eyer.html">is_data_loaded(<i>&lt;eyer&gt;</i>)</a></code> </p>
+          <p><code><a href="load_eyer_data.html">load_eyer_data()</a></code> </p>
         </td>
-        <td><p>Returns if the eylinker object has both evens and fixations loaded</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_data_loaded.html">is_data_loaded()</a></code> </p>
-        </td>
-        <td><p>Returns if the data is loaded</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_eyetracker_data.html">load_eyetracker_data()</a></code> </p>
-        </td>
-        <td><p>Loads data from a folder. Loads preprocessed events and fixations files,
-or raw files if override is set to TRUE or if there are no preprocessed files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_unprocessed_file.html">load_unprocessed_file()</a></code> </p>
-        </td>
-        <td><p>Loads raw file and returns list with evens and fixations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="open_unprocessed_file.html">open_unprocessed_file()</a></code> </p>
-        </td>
-        <td><p>Finds and loads data from a directory</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="preprocess_eye_events.html">preprocess_eye_events()</a></code> </p>
-        </td>
-        <td><p>Reads and cleans events</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="preprocess_eye_fixations.html">preprocess_eye_fixations()</a></code> </p>
-        </td>
-        <td><p>Preprocesses loaded fixations. This usually means adding columns or recalculating
-values that are not not well read</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_calibrations.html">read_calibrations()</a></code> </p>
-        </td>
-        <td><p>Reads eyetracker calibration infromation from given file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_eye_events.html">read_eye_events()</a></code> </p>
-        </td>
-        <td><p>Reads events from given file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_eye_fixations.html">read_eye_fixations()</a></code> </p>
-        </td>
-        <td><p>Reads fixations from given file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_eye_movements.html">read_eye_movements()</a></code> </p>
-        </td>
-        <td><p>Reads movements from given file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_resolution.html">read_resolution()</a></code> </p>
-        </td>
-        <td><p>Reads eyetracker resolution from given file</p></td>
+        <td><p>Loads data from a folder. Loads preprocessed events, gaze and fixations files</p></td>
       </tr><tr>
         
         <td>
@@ -260,10 +192,9 @@ values that are not not well read</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="SR1000.read_resolution.html">SR1000.read_resolution()</a></code> </p>
+          <p><code><a href="save_eyer.html">save_eyer()</a></code> </p>
         </td>
-        <td><p>match two digits at least three digit long after Display coords
-? signifies non greedy match (as least as possible)</p></td>
+        <td><p>Saving eyer object into raw or parsed structure</p></td>
       </tr><tr>
         
         <td>

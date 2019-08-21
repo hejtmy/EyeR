@@ -14,12 +14,12 @@
 #' - data
 #'    - events
 #'    - fixations
-#'    - pupil
+#'    - diameter
 #'    - gaze
-#' - start_time: start time of the first recording in datetime
-#' - resolution: monitor resolution
-#' - eyetracker: string with name of the recording device
-#' - settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
+#' - info: list with eyetracker specific settings, suhc as recording frequency, recorded eye etc.
+#'    - start_time: start time of the first recording in datetime
+#'    - resolution: monitor resolution as a list with width, height fields
+#'    - eyetracker: string with name of the recording device
 #'
 #' Fixations have an obligatory columns: time (s since start), x, y, duration
 #'
@@ -33,14 +33,14 @@ EyerObject <- function(){
   obj$data$events <- data.frame()
   obj$data$fixations <- data.frame()
   obj$data$gaze <- data.frame()
-  obj$start_time <- numeric(0)
-  obj$eyetracker <- character(0)
-  obj$resolution <- list()
-  obj$settings <- list()
+  obj$info <- list(resolution = list(width=NA, height=NA),
+                   eyetracker = character(0),
+                   start_time = numeric(0))
   class(obj) <- append(class(obj), "eyer")
   return(obj)
 }
 
+DATA_FIELDS <- c("gaze", "fixations", "events", "diameter")
 
 #' Returns if passed object is valid eyer object
 #'
@@ -55,7 +55,7 @@ is_valid_eyer <- function(obj){
     warning("object doesn't have eyer class")
     return(FALSE)
   }
-  if(length(obj$start_time) != 1){
+  if(length(obj$info$start_time) != 1){
     warning("object doesn't have valid start time")
     return(FALSE)
   }

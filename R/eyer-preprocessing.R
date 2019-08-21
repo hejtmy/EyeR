@@ -1,33 +1,4 @@
-#' Reads and cleans events
-#'
-#' @param df_events data frame with events loaded
-#' @param eyetracker
-#'
-#' @return
-#' @export
-#'
-#' @examples
-preprocess_eye_events <- function(df_events, eyetracker){
-  if(eyetracker == "SR 1000") return(SR1000.preprocess_eye_events(df_events))
-  return(eyetracker_not_found(eyetracker))
-}
-
-#' Preprocesses loaded fixations. This usually means adding columns or recalculating
-#' values that are not not well read
-#'
-#' @param df_fixations data.frame with fixations loaded
-#' @param eyetracker which eyetracker was used. See readme for more information.
-#'
-#' @return dataframe with generic preprocessing defined for given eyetracker
-#' @export
-#'
-#' @examples
-preprocess_eye_fixations <- function(df_fixations, eyetracker){
-  if(eyetracker == "SR 1000") return(SR1000.preprocess_eye_fixations(df_fixations))
-  return(eyetracker_not_found(eyetracker))
-}
-
-#' Title
+#' Changes object resolution
 #'
 #' @param df_fixations loaded table with fixations
 #' @param original_resolution defined as a list with width and height in pixesls.
@@ -39,7 +10,7 @@ preprocess_eye_fixations <- function(df_fixations, eyetracker){
 #' @export
 #'
 #' @examples
-change_resolution <- function(df_fixations, original_resolution, target_resolution){
+change_resolution <- function(obj, original_resolution, target_resolution){
   df_fixations$x <- round(df_fixations$x/original_resolution$width * target_resolution$width)
   df_fixations$y <- round(df_fixations$y/original_resolution$height * target_resolution$height)
   return(df_fixations)

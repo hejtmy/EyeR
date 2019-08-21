@@ -24,13 +24,15 @@ EyerObject has the following fields
 \itemize{
 \item events
 \item fixations
-\item pupil
+\item diameter
 \item gaze
 }
+\item info: list with eyetracker specific settings, suhc as recording frequency, recorded eye etc.
+\itemize{
 \item start_time: start time of the first recording in datetime
-\item resolution: monitor resolution
+\item resolution: monitor resolution as a list with width, height fields
 \item eyetracker: string with name of the recording device
-\item settings: list with eyetracker specific settings, suhc as frequency, recorded eye etc.
+}
 }
 
 Fixations have an obligatory columns: time (s since start), x, y, duration
