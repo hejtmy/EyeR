@@ -1,6 +1,6 @@
 context('loading')
 
-test_folder <- "../../inst/extdata/"
+test_folder <- system.file("extdata", package = "eyer")
 FIXATIONS_N_ROW <- 378
 
 test_that("Can load preprocessed data", {
