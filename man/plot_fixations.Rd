@@ -2,13 +2,18 @@
 % Please edit documentation in R/eyer-visualising.R
 \name{plot_fixations}
 \alias{plot_fixations}
-\title{PLot fixations data}
+\title{Plot fixations data}
 \usage{
 plot_fixations(obj, ...)
 }
 \arguments{
+\item{obj}{object with the fixations data}
+
 \item{...}{}
 }
+\value{
+ggplot2 plot
+}
 \description{
-PLot fixations data
+Plot fixations data
 }

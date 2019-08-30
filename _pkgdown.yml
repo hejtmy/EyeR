@@ -6,12 +6,27 @@ reference:
   - '`is_valid_eyer`'
   - '`load_eyer_data`'
 - title: Preprocessing
-  desc:
+  desc: Preprocessing of the
   contents:
   - '`add_screen_area_fixations`'
   - '`change_resolution`'
+  - '`remove_out_of_bounds`'
+  - '`remove_out_of_bounds.eyer`'
+  - '`downsample`'
+  - '`downsample.eyer`'
   - '`save_eyer`'
-  - '`remove_out_of_bounds_fixations`'
+- title: Getters
+  desc:
+  contents:
+  - '`filter_times`'
+  - '`filter_times.eyer`'
+- title: Visualisations
+  desc:
+  contents:
+  - '`plot_fixations`'
+  - '`plot_fixations.eyer`'
+  - '`plot_gaze`'
+  - '`plot_gaze.eyer`'
 - title: Synchronization
   desc: Functions to synchronize eyetracker data with other experimental data
   contents:
@@ -21,4 +36,9 @@ reference:
   - '`find_group_match`'
   - '`find_preprocessed_files`'
   - '`try_fit_event`'
+- title: Generic helpers
+  desc: Helper functions
+  contents:
+  - '`remove_out_of_bounds.data.frame`'
+
 

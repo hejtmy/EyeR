@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Approximates x, y resolution from given coordinates to designated — change_resolution • eyer</title>
+<title>Filters data between start and end time — filter_times.eyer • eyer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Approximates x, y resolution from given coordinates to designated — change_resolution" />
+<meta property="og:title" content="Filters data between start and end time — filter_times.eyer" />
 
-<meta property="og:description" content="Approximates x, y resolution from given coordinates to designated" />
+<meta property="og:description" content="Filters data between start and end time" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,41 +106,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Approximates x, y resolution from given coordinates to designated</h1>
+    <h1>Filters data between start and end time</h1>
     
-    <div class="hidden name"><code>change_resolution.Rd</code></div>
+    <div class="hidden name"><code>filter_times.eyer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Approximates x, y resolution from given coordinates to designated</p>
+    <p>Filters data between start and end time</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>change_resolution</span>(<span class='no'>obj</span>, <span class='no'>original</span>, <span class='no'>target</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for eyer</span>
+<span class='fu'><a href='filter_times.html'>filter_times</a></span>(<span class='no'>obj</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='kw'>data_fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
+  <span class='kw'>raw_times</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>recalculate_times</span> <span class='kw'>=</span> <span class='no'>F</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>Object to do transformations on</p></td>
+      <td><p>Eyer object to filted data from</p></td>
     </tr>
     <tr>
-      <th>original</th>
-      <td><p>defined as a list with width and height in pixesls.
-Ex: list(width=1920, height=1080)</p></td>
+      <th>start</th>
+      <td><p>start time (inclusive) as is in the time column</p></td>
     </tr>
     <tr>
-      <th>target</th>
-      <td><p>defined as a list with width and height in pixesls.
-Ex: list(width=1920, height=1080)</p></td>
+      <th>end</th>
+      <td><p>end time (exclusive) as is in the time column</p></td>
+    </tr>
+    <tr>
+      <th>data_fields</th>
+      <td><p>list of data fields (in obj$data) to filter. If empty, all fields are filtered</p></td>
+    </tr>
+    <tr>
+      <th>raw_times</th>
+      <td><p>if T, uses obj$info$start_time to calculate times to filter.
+Useful if the data have 0 based times since start, but we want to filter based on other values. <strong>default</strong> is FALSE</p></td>
+    </tr>
+    <tr>
+      <th>recalculate_times</th>
+      <td><p>If true, recalculates times to begin at 0 again. Changes obj$info$start_time. <strong>default</strong> is FALSE</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame with fixations with changed resolution. Can still yield out of bounds</p>
+    <p>object with filtered data.</p>
     
 
   </div>

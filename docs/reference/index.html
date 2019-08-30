@@ -117,8 +117,34 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-object-definitions" class="hasAnchor"><a href="#section-object-definitions" class="anchor"></a>Object Definitions</h2>
           <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="EyerObject.html">EyerObject()</a></code> </p>
+        </td>
+        <td><p>Returns empty eyer object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is_valid_eyer.html">is_valid_eyer()</a></code> </p>
+        </td>
+        <td><p>Returns if passed object is valid eyer object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_eyer_data.html">load_eyer_data()</a></code> </p>
+        </td>
+        <td><p>Loads data from a folder. Loads preprocessed events, gaze and fixations files</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-preprocessing" class="hasAnchor"><a href="#section-preprocessing" class="anchor"></a>Preprocessing</h2>
+          <p class="section-desc"><p>Preprocessing of the</p></p>
         </th>
       </tr>
       <tr>
@@ -133,14 +159,98 @@ being within area bounds</p></td>
         <td>
           <p><code><a href="change_resolution.html">change_resolution()</a></code> </p>
         </td>
-        <td><p>Changes object resolution</p></td>
+        <td><p>Approximates x, y resolution from given coordinates to designated</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="EyerObject.html">EyerObject()</a></code> </p>
+          <p><code><a href="remove_out_of_bounds.html">remove_out_of_bounds()</a></code> </p>
         </td>
-        <td><p>Returns empty eyer object</p></td>
+        <td><p>Removes points out of resolution boundary</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="remove_out_of_bounds.eyer.html">remove_out_of_bounds(<i>&lt;eyer&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Removes points out of resolution boundary</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="downsample.html">downsample()</a></code> </p>
+        </td>
+        <td><p>Downsamples data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="downsample.eyer.html">downsample(<i>&lt;eyer&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Downsamples eyer gaze data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="save_eyer.html">save_eyer()</a></code> </p>
+        </td>
+        <td><p>Saving eyer object into raw or parsed structure</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-getters" class="hasAnchor"><a href="#section-getters" class="anchor"></a>Getters</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="filter_times.html">filter_times()</a></code> </p>
+        </td>
+        <td><p>Filters data between start and end time</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter_times.eyer.html">filter_times(<i>&lt;eyer&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Filters data between start and end time</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-visualisations" class="hasAnchor"><a href="#section-visualisations" class="anchor"></a>Visualisations</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="plot_fixations.html">plot_fixations()</a></code> </p>
+        </td>
+        <td><p>Plot fixations data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_fixations.eyer.html">plot_fixations(<i>&lt;eyer&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot fixations and their durations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_gaze.html">plot_gaze()</a></code> </p>
+        </td>
+        <td><p>Plots gaze data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_gaze.eyer.html">plot_gaze(<i>&lt;eyer&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plots gaze data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-synchronization" class="hasAnchor"><a href="#section-synchronization" class="anchor"></a>Synchronization</h2>
+          <p class="section-desc"><p>Functions to synchronize eyetracker data with other experimental data</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="eye_synchro_acceptable.html">eye_synchro_acceptable()</a></code> </p>
@@ -174,34 +284,24 @@ returns index of first matchin eye event</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="is_valid_eyer.html">is_valid_eyer()</a></code> </p>
-        </td>
-        <td><p>Returns if passed object is valid eyer object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_eyer_data.html">load_eyer_data()</a></code> </p>
-        </td>
-        <td><p>Loads data from a folder. Loads preprocessed events, gaze and fixations files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_out_of_bounds_fixations.html">remove_out_of_bounds_fixations()</a></code> </p>
-        </td>
-        <td><p>Removes fixations out of disp_resolution boundary</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="save_eyer.html">save_eyer()</a></code> </p>
-        </td>
-        <td><p>Saving eyer object into raw or parsed structure</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="try_fit_event.html">try_fit_event()</a></code> </p>
         </td>
         <td><p>Returns a data frome with synchronising times for each set
 Table is in format of set_id, time_eyetracker, time_unity</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-generic-helpers" class="hasAnchor"><a href="#section-generic-helpers" class="anchor"></a>Generic helpers</h2>
+          <p class="section-desc"><p>Helper functions</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="remove_out_of_bounds.data.frame.html">remove_out_of_bounds(<i>&lt;data.frame&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Removes points out of resolution boundary</p></td>
       </tr>
     </tbody>
     </table>
@@ -210,7 +310,12 @@ Table is in format of set_id, time_eyetracker, time_unity</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-object-definitions">Object Definitions</a></li>
+      <li><a href="#section-preprocessing">Preprocessing</a></li>
+      <li><a href="#section-getters">Getters</a></li>
+      <li><a href="#section-visualisations">Visualisations</a></li>
+      <li><a href="#section-synchronization">Synchronization</a></li>
+      <li><a href="#section-generic-helpers">Generic helpers</a></li>
     </ul>
   </div>
 </div>

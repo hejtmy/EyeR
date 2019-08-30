@@ -29,12 +29,12 @@ plot_gaze.eyer <- function(obj, downsample = 10, ...){
 }
 
 
-#' PLot fixations data
+#' Plot fixations data
 #'
-#' @param obj
+#' @param obj object with the fixations data
 #' @param ...
 #'
-#' @return
+#' @return ggplot2 plot
 #' @export
 #'
 #' @examples
@@ -42,6 +42,16 @@ plot_fixations <- function(obj, ...){
   UseMethod("plot_fixations")
 }
 
+#' Plot fixations and their durations
+#'
+#' @param obj Eyer object with fixations loaded
+#' @param duration if the duration should be plotted. Visualised by color and size. **default** is TRUE
+#' @param ...
+#'
+#' @return ggplot2 plot
+#' @export
+#'
+#' @examples
 plot_fixations.eyer <- function(obj, duration = T, ...){
   df <- obj$data$fixations
   plt <- ggplot(df, aes(x, y)) + theme_minimal()
