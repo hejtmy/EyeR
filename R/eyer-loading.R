@@ -37,6 +37,7 @@ find_preprocessed_files <- function(folder){
 
 #' @param folder where to look
 #' @param ptr pattern to search for
+#' @noRd
 find_file_or_null <- function(folder, ptr, allow_multiples = F){
   ptr <- paste("*", ptr, sep = "")
   filepath <- list.files(folder, pattern = ptr, full.names = T)

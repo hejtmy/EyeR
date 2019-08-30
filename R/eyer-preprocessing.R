@@ -85,6 +85,42 @@ remove_out_of_bounds.data.frame <- function(df, replace, resolution){
   return(df)
 }
 
+#' Downsamples data
+#'
+#' @param obj object to downsample
+#' @param n picks every nth recording
+#' @param ...
+#'
+#' @return donwsampled object
+#' @export
+#'
+#' @examples
+downsample <- function(obj, n, ...){
+  UseMethod("downsample")
+}
+
+#' Downsamples eyer gaze data
+#'
+#' @param obj EyerOBject
+#' @param n picks every nth recording
+#' @param ...
+#'
+#' @return EyerObject with downsampled gaze data
+#' @export
+#'
+#' @examples
+downsample.eyer <- function(obj, n, ...){
+  obj$data$gaze <- downsample.data.frame(obj$data$gaze, n)
+  return(obj)
+}
+
+
+#' @export
+downsample.data.frame <- function(df, n){
+  df <- df[seq(1, nrow(df), n), ]
+  return(df)
+}
+
 #' Adds new column to the fixations data frame with information about a fixation
 #' being within area bounds
 #'
