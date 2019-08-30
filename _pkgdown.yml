@@ -1,0 +1,24 @@
+reference:
+- title: Object Definitions
+  desc: ~
+  contents:
+  - '`EyerObject`'
+  - '`is_valid_eyer`'
+  - '`load_eyer_data`'
+- title: Preprocessing
+  desc:
+  contents:
+  - '`add_screen_area_fixations`'
+  - '`change_resolution`'
+  - '`save_eyer`'
+  - '`remove_out_of_bounds_fixations`'
+- title: Synchronization
+  desc: Functions to synchronize eyetracker data with other experimental data
+  contents:
+  - '`eye_synchro_acceptable`'
+  - '`eye_to_unity_times`'
+  - '`find_better_match`'
+  - '`find_group_match`'
+  - '`find_preprocessed_files`'
+  - '`try_fit_event`'
+

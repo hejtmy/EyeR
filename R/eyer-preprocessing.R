@@ -27,21 +27,62 @@ change_resolution.data.frame <- function(df, original, target){
   df$y <- round(df$y/original$height * target$height)
   return(df)
 }
-#' Removes fixations out of disp_resolution boundary
+
+#'  Removes points out of resolution boundary
 #'
-#' @param df_fixations fixation table
-#' @param disp_resolution defined as a list with width and height in pixesls.
-#' Ex: list(width=1920, height=1080)
+#' @param obj OBject
+#' @param replace what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default
+#' @param resolution efined as a list with width and height in pixesls. e.g: list(width=1920, height=1080)
+#' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-remove_out_of_bounds_fixations <- function(df_fixations, disp_resolution = list(width = 1920, height = 1080)){
-  df_fixations <- df_fixations[(df_fixations$x < disp_resolution$width) &
-                                 (df_fixations$y < disp_resolution$height), ]
-  df_fixations <- df_fixations[df_fixations$x > 0 & df_fixations$y > 0, ]
-  return(df_fixations)
+remove_out_of_bounds <- function(obj, replace = NULL, resolution = NULL, ...){
+  UseMethod("remove_out_of_bounds")
+}
+
+#'  Removes points out of resolution boundary
+#'
+#' @param obj OBject
+#' @param replace what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default
+#' @param resolution efined as a list with width and height in pixesls. e.g: list(width = 1920, height = 1080)
+#'
+#' @return
+#' @export
+#'
+#' @examples
+remove_out_of_bounds.eyer <- function(obj, replace, resolution){
+  if(is.null(resolution)) resolution <- obj$info$resolution
+  if(is.null(resolution)){
+    warning("Object doesn't have resolution value in info and no resulotion passed, returning unmodified object")
+    return(obj)
+  }
+  if(nrow(obj$data$fixations) > 0) obj$data$fixations <- remove_out_of_bounds.data.frame(obj$data$fixations, replace, resolution)
+  if(nrow(obj$data$gaze) > 0) obj$data$gaze <- remove_out_of_bounds.eyer(obj$data$gaze, original, target)
+  return(obj)
+}
+
+#' Removes points out of resolution boundary
+#'
+#' @param df table with x, y, columns
+#' @param replace what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default
+#' @param resolution defined as a list with width and height in pixesls. e.g: list(width=1920, height=1080)
+#'
+#' @return eyer object with replaced falues in gaze and fixations
+#' @export
+#'
+#' @examples
+remove_out_of_bounds.data.frame <- function(df, replace, resolution){
+  if(is.null(replace)) {
+    df <- df[df$x < df$width & df$y < df$height, ]
+    df <- df[df$x > 0 & df$y > 0, ]
+  } else {
+    df[df$x < df$width & df$y < df$height, c("x", "y")] <- c(replace, replace)
+    df[df$x > 0 & df$y > 0, c("x", "y")]  <- c(replace, replace)
+  }
+  return(df)
 }
 
 #' Adds new column to the fixations data frame with information about a fixation
