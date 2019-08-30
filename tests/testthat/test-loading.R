@@ -1,7 +1,7 @@
 context('loading')
 
 test_folder <- "../../inst/extdata/"
-FIXATIONS_N_ROW <- 797
+FIXATIONS_N_ROW <- 378
 
 test_that("Can load preprocessed data", {
   expect_silent(eye <- load_eyer_data(test_folder))
