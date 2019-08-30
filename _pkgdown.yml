@@ -30,7 +30,6 @@ reference:
   - '`plot_gaze_heatmap`'
   - '`plot_gaze_heatmap.eyer`'
   - '`plot_eye_heatmap`'
-
 - title: Synchronization
   desc: Functions to synchronize eyetracker data with other experimental data
   contents:
