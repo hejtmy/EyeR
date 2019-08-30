@@ -1,21 +1,32 @@
-#' Changes object resolution
+#' Approximates x, y resolution from given coordinates to designated
 #'
-#' @param df_fixations loaded table with fixations
-#' @param original_resolution defined as a list with width and height in pixesls.
+#' @param obj Object to do transformations on
+#' @param original defined as a list with width and height in pixesls.
 #' Ex: list(width=1920, height=1080)
-#' @param target_resolution defined as a list with width and height in pixesls.
+#' @param target defined as a list with width and height in pixesls.
 #' Ex: list(width=1920, height=1080)
 #'
 #' @return data frame with fixations with changed resolution. Can still yield out of bounds
 #' @export
 #'
 #' @examples
-change_resolution <- function(obj, original_resolution, target_resolution){
-  df_fixations$x <- round(df_fixations$x/original_resolution$width * target_resolution$width)
-  df_fixations$y <- round(df_fixations$y/original_resolution$height * target_resolution$height)
-  return(df_fixations)
+change_resolution <- function(obj, original, target, ...){
+  UseMethod("change_resolution")
 }
 
+#' @export
+change_resolution.eyer <- function(obj, original, target){
+  if(nrow(obj$data$fixations) > 0) obj$data$fixations <- change_resolution.data.frame(obj$data$fixations, original, target)
+  if(nrow(obj$data$gaze) > 0) obj$data$gaze <- change_resolution.data.frame(obj$data$gaze, original, target)
+  return(obj)
+}
+
+#' @export
+change_resolution.data.frame <- function(df, original, target){
+  df$x <- round(df$x/original$width * target$width)
+  df$y <- round(df$y/original$height * target$height)
+  return(df)
+}
 #' Removes fixations out of disp_resolution boundary
 #'
 #' @param df_fixations fixation table

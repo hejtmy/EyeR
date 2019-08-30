@@ -7,7 +7,10 @@
 is_valid_eyer(obj)
 }
 \arguments{
-\item{obj}{}
+\item{obj}{Object to be tested}
+}
+\value{
+logical stating if the object is valid
 }
 \description{
 Returns if passed object is valid eyer object

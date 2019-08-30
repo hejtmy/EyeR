@@ -21,7 +21,9 @@
 #'    - resolution: monitor resolution as a list with width, height fields
 #'    - eyetracker: string with name of the recording device
 #'
-#' Fixations have an obligatory columns: time (s since start), x, y, duration
+#' Fixations have obligatory columns: time (commonly time since start), x, y, duration
+#' Gaze have obligatory columns: time (commonly time since start), x, y
+#' Events have columns: time, x, y
 #'
 #' @return eyer object
 #' @export
@@ -44,9 +46,9 @@ DATA_FIELDS <- c("gaze", "fixations", "events", "diameter")
 
 #' Returns if passed object is valid eyer object
 #'
-#' @param obj
+#' @param obj Object to be tested
 #'
-#' @return
+#' @return logical stating if the object is valid
 #' @export
 #'
 #' @examples

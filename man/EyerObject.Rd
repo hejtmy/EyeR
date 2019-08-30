@@ -35,5 +35,7 @@ EyerObject has the following fields
 }
 }
 
-Fixations have an obligatory columns: time (s since start), x, y, duration
+Fixations have obligatory columns: time (commonly time since start), x, y, duration
+Gaze have obligatory columns: time (commonly time since start), x, y
+Events have columns: time, x, y
 }

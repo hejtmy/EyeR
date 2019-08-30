@@ -2,22 +2,22 @@
 % Please edit documentation in R/eyer-preprocessing.R
 \name{change_resolution}
 \alias{change_resolution}
-\title{Changes object resolution}
+\title{Approximates x, y resolution from given coordinates to designated}
 \usage{
-change_resolution(obj, original_resolution, target_resolution)
+change_resolution(obj, original, target, ...)
 }
 \arguments{
-\item{original_resolution}{defined as a list with width and height in pixesls.
+\item{obj}{Object to do transformations on}
+
+\item{original}{defined as a list with width and height in pixesls.
 Ex: list(width=1920, height=1080)}
 
-\item{target_resolution}{defined as a list with width and height in pixesls.
+\item{target}{defined as a list with width and height in pixesls.
 Ex: list(width=1920, height=1080)}
-
-\item{df_fixations}{loaded table with fixations}
 }
 \value{
 data frame with fixations with changed resolution. Can still yield out of bounds
 }
 \description{
-Changes object resolution
+Approximates x, y resolution from given coordinates to designated
 }
