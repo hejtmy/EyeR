@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/main.html">Main vignette</a>
+      <a href="articles/main.html">Loading and saving</a>
     </li>
   </ul>
 </li>
@@ -78,26 +78,19 @@
 <h2 class="hasAnchor">
 <a href="#core-ideas" class="anchor"></a>Core ideas</h2>
 <p>The package works with <code>EyerObject</code> of S3 class <code>eyer</code>. You can construct the object on your own based on <a href="https://hejtmy.github.io/eyer/reference/EyerObject.html">documentation</a></p>
-<div id="loading" class="section level3">
-<h3 class="hasAnchor">
-<a href="#loading" class="anchor"></a>Loading</h3>
-<p>As the raw eyetracker data can get very large, the idea is that after the data has been preprocessed and fixations, saccades and events have been extracted, the package resaves the preprocessed files inside the original folder. In this way, when you load the participant’s data again, you can immediately load the preprocessed files. In this way, the general function to read data takes a folder rather than a file and tries to look for and load any preprocessed raw files</p>
 </div>
+<div id="loading" class="section level2">
+<h2 class="hasAnchor">
+<a href="#loading" class="anchor"></a>Loading</h2>
+<p>As the raw eyetracker data can get very large, the idea is that after the data has been preprocessed and fixations, saccades and events have been extracted, the package resaves the preprocessed files inside the original folder. In this way, when you load the participant’s data again, you can immediately load the preprocessed files. In this way, the general function to read data takes a folder rather than a file and tries to look for and load any preprocessed raw files.</p>
+<p>For preprocessing and loading raw eyetracker data, you either have to write your own code, or you can use <a href="https://github.com/hejtmy/pupilr">pupilr</a> for pupil labs eyetrakcking or <a href="https://github.com/hejtmy/eyelinkr">eyelinkr</a> for Eyelink SR 1000. Therse packages contain functions to convert data to proper <code>eyer</code> format.</p>
 </div>
 <div id="example-code" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-code" class="anchor"></a>Example code</h2>
-<pre class="{r}"><code>dir &lt;- 'path to the directory with the eyetracker data'
-EYETRACKER &lt;- 'SR 1000' #eyetracker type
-eye &lt;- load_eyetracker_data(dir, EYETRACKER)</code></pre>
-<div id="supported-eyetrackers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#supported-eyetrackers" class="anchor"></a>Supported eyetrackers</h3>
-<p>Currently this package supports these eyetrackers. Code for the functions is in parenthesis.</p>
-<ul>
-<li>Eyelink SR 1000 (SR 1000)</li>
-</ul>
-</div>
+<pre class="{r}"><code>dir &lt;- 'path to the directory with preprocessed data'
+eye &lt;- load_eyer_data(dir)
+save_eyer(eye) #saves preprocessed data</code></pre>
 </div>
 </div>
   </div>

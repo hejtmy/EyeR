@@ -12,7 +12,7 @@ plot_gaze_heatmap(obj, ...)
 \item{...}{optional ggplot arguments}
 }
 \value{
-ggplot
+ggplot plot
 }
 \description{
 Wrapper around \code{\link{plot_eye_heatmap}} to plot gaze information
