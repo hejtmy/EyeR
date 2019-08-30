@@ -23,7 +23,7 @@ plot_gaze <- function(obj, ...){
 #' @examples
 plot_gaze.eyer <- function(obj, downsample = 10, ...){
   df <- obj$data$gaze
-  df <- df[seq(1, nrow(df), frequency), ]
+  if(downsample > 1) df <- downsample(df, downsample)
   plt <- ggplot(df, aes(x, y)) + geom_point(...)
   return(plt)
 }
