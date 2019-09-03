@@ -35,6 +35,7 @@ reference:
   desc: ggplot geoms to plot data
   contents:
   - '`geom_monitor_boundaries`'
+  - '`geom_area_boundaries`'
 - title: Synchronization
   desc: Functions to synchronize eyetracker data with other experimental data
   contents:

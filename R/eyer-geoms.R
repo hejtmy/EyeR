@@ -18,3 +18,26 @@ geom_monitor_boundaries <- function(width, height, alpha = 0, size = 1.5, color 
                         inherit.aes = F, alpha = alpha,
                         size = size, color = color, ...)))
 }
+
+#' Plots area boundaries
+#'
+#' @details Wrapper around `geom_rect` to be used with *area* functions
+#'
+#' @param ls list with
+#' @param alpha rectangle alpha, **default** is 0.2
+#' @param size rectangle line size, **default** is 1
+#' @param color rectangle color, **default** is 'black'
+#' @param fill rectangle fill, **default** is 'grey20'
+#' @param ... optional `geom_rect` parameters
+#'
+#' @return ggplot geom
+#' @export
+#'
+#' @examples
+geom_area_boundaries <- function(ls, alpha = 0.2, size = 1,
+                               color = "black", fill = "grey20", ...){
+  return(list(geom_rect(aes(xmin=ls$xmin, xmax=ls$xmax, ymin=ls$ymin, ymax=ls$ymax),
+                        inherit.aes = F, alpha = alpha,
+                        size = size, color = color, fill = fill,
+                        ...)))
+}
