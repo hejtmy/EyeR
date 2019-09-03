@@ -104,3 +104,33 @@ plot_eye_heatmap <- function(x, y, weights = NULL, ...){
     scale_fill_viridis_c() + theme_minimal()
   return(plt)
 }
+
+
+#' Plots monitor boundaries around data
+#'
+#' @details creates ggplot geom which plots a geom_rect given specific resolution infromation in the info field
+#'
+#' @description default geom properties are size = 1, alpha = 0 and color = 'red'. You can overwrite these in teh ...
+#' argument.
+#'
+#' @param obj EyerObject with `obj$info$resolution` field
+#' @param ... ggplot options for geom_rect
+#'
+#' @return ggplot geom
+#' @export
+#'
+#' @examples
+geom_eyer_monitor <- function(obj, ...){
+  res <- obj$info$resolution
+  if(is.null(res)){
+    warning("passed EyerObject doens't have obj$info$resolution field")
+    return(list())
+  }
+  width <- res$width
+  height <- res$height
+  if(any(is.null(width), is.null(height), is.na(width), is.na(height))){
+    warning("passed obj$info$resolution doesn't have valid width, height fields")
+    return(list())
+  }
+  return(geom_monitor_boundaries(width, height, ...))
+}

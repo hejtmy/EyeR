@@ -30,6 +30,11 @@ reference:
   - '`plot_gaze_heatmap`'
   - '`plot_gaze_heatmap.eyer`'
   - '`plot_eye_heatmap`'
+  - '`geom_eyer_monitor`'
+- title: Custom geoms
+  desc: ggplot geoms to plot data
+  contents:
+  - '`geom_monitor_boundaries`'
 - title: Synchronization
   desc: Functions to synchronize eyetracker data with other experimental data
   contents:
