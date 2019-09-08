@@ -23,7 +23,7 @@ geom_monitor_boundaries <- function(width, height, alpha = 0, size = 1.5, color 
 #'
 #' @details Wrapper around `geom_rect` to be used with *area* functions
 #'
-#' @param ls list with
+#' @param ls list with xmin, xmax, ymin, ymax fields
 #' @param alpha rectangle alpha, **default** is 0.2
 #' @param size rectangle line size, **default** is 1
 #' @param color rectangle color, **default** is 'black'

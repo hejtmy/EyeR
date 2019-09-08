@@ -1,7 +1,7 @@
 #' Saving eyer object into raw or parsed structure
 #'
 #' @param obj eyer object ot save
-#' @param folder where to save the data. Defaults to workign dir
+#' @param folder where to save the data. Defaults to working dir. Tries to create the folder if it doesn't exist
 #' @param name name of the files to be saved
 #' @param raw if true, then entire object will be saved as an R dataobject.
 #' otherwise fields will be parsed into separate readable csv and json files
@@ -13,6 +13,8 @@
 #' @examples
 save_eyer <- function(obj, folder =".", name = "unnamed", raw = F, ...){
   # validate eyer
+  # check for folder and create if it doesn't esits
+  if(!dir.exists(folder)) dir.create(folder)
   # Save data fields
   for(field in names(obj$data)){
     df <- obj$data[[field]]

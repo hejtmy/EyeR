@@ -8,7 +8,7 @@ geom_area_boundaries(ls, alpha = 0.2, size = 1, color = "black",
   fill = "grey20", ...)
 }
 \arguments{
-\item{ls}{list with}
+\item{ls}{list with xmin, xmax, ymin, ymax fields}
 
 \item{alpha}{rectangle alpha, \strong{default} is 0.2}
 

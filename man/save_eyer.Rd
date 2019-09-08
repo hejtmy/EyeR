@@ -9,7 +9,7 @@ save_eyer(obj, folder = ".", name = "unnamed", raw = F, ...)
 \arguments{
 \item{obj}{eyer object ot save}
 
-\item{folder}{where to save the data. Defaults to workign dir}
+\item{folder}{where to save the data. Defaults to working dir. Tries to create the folder if it doesn't exist}
 
 \item{name}{name of the files to be saved}
 
