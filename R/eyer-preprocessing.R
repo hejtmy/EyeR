@@ -116,9 +116,9 @@ downsample.eyer <- function(obj, n, ...){
   return(obj)
 }
 
-
 #' @export
 downsample.data.frame <- function(df, n){
+  if(nrow(df) < 1) return(df)
   df <- df[seq(1, nrow(df), n), ]
   return(df)
 }
