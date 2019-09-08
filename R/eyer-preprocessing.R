@@ -18,11 +18,13 @@ change_resolution <- function(obj, original, target, ...){
 change_resolution.eyer <- function(obj, original, target){
   if(nrow(obj$data$fixations) > 0) obj$data$fixations <- change_resolution.data.frame(obj$data$fixations, original, target)
   if(nrow(obj$data$gaze) > 0) obj$data$gaze <- change_resolution.data.frame(obj$data$gaze, original, target)
+  obj$info$resolution <- target
   return(obj)
 }
 
 #' @export
 change_resolution.data.frame <- function(df, original, target){
+  #validations and check for errors
   df$x <- round(df$x/original$width * target$width)
   df$y <- round(df$y/original$height * target$height)
   return(df)
