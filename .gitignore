@@ -1,10 +1,11 @@
-#playground
+# playground
 playground*.R
-
 inst/doc
 
-#temporary
+
+# temporary files
 inst/extdata/test-pupil-lab
+temp/
 
 # History files
 .Rhistory
