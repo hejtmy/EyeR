@@ -4,10 +4,12 @@
 \alias{geom_eyer_monitor}
 \title{Plots monitor boundaries around data}
 \usage{
-geom_eyer_monitor(obj, ...)
+geom_eyer_monitor(obj, add_centre = FALSE, ...)
 }
 \arguments{
 \item{obj}{EyerObject with \code{obj$info$resolution} field}
+
+\item{add_centre}{if set to TRUE, adds point to the centre of the geom}
 
 \item{...}{ggplot options for geom_rect}
 }

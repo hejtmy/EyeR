@@ -37,7 +37,7 @@ geom_monitor_boundaries <- function(width, height, alpha = 0, size = 1.5, color 
 geom_area_boundaries <- function(ls, alpha = 0.2, size = 1,
                                color = "black", fill = "grey20", ...){
   return(list(geom_rect(aes(xmin=ls$xmin, xmax=ls$xmax, ymin=ls$ymin, ymax=ls$ymax),
-                        inherit.aes = F, alpha = alpha,
+                        inherit.aes = FALSE, alpha = alpha,
                         size = size, color = color, fill = fill,
                         ...)))
 }

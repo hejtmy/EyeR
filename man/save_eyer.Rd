@@ -4,7 +4,7 @@
 \alias{save_eyer}
 \title{Saving eyer object into raw or parsed structure}
 \usage{
-save_eyer(obj, folder = ".", name = "unnamed", raw = F, ...)
+save_eyer(obj, folder = ".", name = "unnamed", robject = FALSE, ...)
 }
 \arguments{
 \item{obj}{eyer object ot save}
@@ -13,7 +13,7 @@ save_eyer(obj, folder = ".", name = "unnamed", raw = F, ...)
 
 \item{name}{name of the files to be saved}
 
-\item{raw}{if true, then entire object will be saved as an R dataobject.
+\item{robject}{if true, then entire object will be saved as an R dataobject.
 otherwise fields will be parsed into separate readable csv and json files}
 
 \item{...}{}

@@ -42,7 +42,17 @@ EyerObject <- function(){
   return(obj)
 }
 
-DATA_FIELDS <- c("gaze", "fixations", "events", "diameter")
+#' Is obj eyer object?
+#'
+#' @param obj object to check
+#'
+#' @return
+#' @export
+#'
+#' @examples
+is.eyer <- function(obj){
+  return("eyer" %in% attributes(obj)$class)
+}
 
 #' Returns if passed object is valid eyer object
 #'
@@ -53,7 +63,7 @@ DATA_FIELDS <- c("gaze", "fixations", "events", "diameter")
 #'
 #' @examples
 is_valid_eyer <- function(obj){
-  if(!("eyer" %in% attributes(obj)$class)){
+  if(!is.eyer(obj)){
     warning("object doesn't have eyer class")
     return(FALSE)
   }
@@ -81,3 +91,28 @@ is_valid_eyer <- function(obj){
   return(TRUE)
 }
 
+#' Defines AreaObject
+#'
+#' @details AreaObject is a list of class area with given fields. It is used by
+#' plotting functions and mainly add_areas
+#'
+#' @param name name of the area
+#' @param x x limits of the area.
+#' @param y
+#'
+#' @return
+#' @export
+#'
+#' @examples
+AreaObject <- function(name, x=numeric(2), y=numeric(2)){
+  obj <- list()
+  obj$name <- name
+  obj$x <- x
+  obj$y <- y
+  class(obj) <- append(class(obj), "area")
+  return(obj)
+}
+
+is_valid_area <- function(obj){
+  return(TRUE)
+}

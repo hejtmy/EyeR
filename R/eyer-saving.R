@@ -3,7 +3,7 @@
 #' @param obj eyer object ot save
 #' @param folder where to save the data. Defaults to working dir. Tries to create the folder if it doesn't exist
 #' @param name name of the files to be saved
-#' @param raw if true, then entire object will be saved as an R dataobject.
+#' @param robject if true, then entire object will be saved as an R dataobject.
 #' otherwise fields will be parsed into separate readable csv and json files
 #' @param ...
 #'
@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-save_eyer <- function(obj, folder =".", name = "unnamed", raw = F, ...){
+save_eyer <- function(obj, folder =".", name = "unnamed", robject = FALSE, ...){
   # validate eyer
   # check for folder and create if it doesn't esits
   if(!dir.exists(folder)) dir.create(folder)
@@ -20,7 +20,7 @@ save_eyer <- function(obj, folder =".", name = "unnamed", raw = F, ...){
     df <- obj$data[[field]]
     name_df <- paste0(name, "_eyer_", field, ".csv")
     savepath <- file.path(folder, name_df)
-    write.table(df, file = savepath, sep = ";", row.names = F)
+    write.table(df, file = savepath, sep = ";", row.names = FALSE)
   }
   #save evrything else as json
   savepath <- file.path(folder, paste0(name, "_eyer_info.json"))

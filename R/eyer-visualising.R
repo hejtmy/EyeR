@@ -105,7 +105,6 @@ plot_eye_heatmap <- function(x, y, weights = NULL, ...){
   return(plt)
 }
 
-
 #' Plots monitor boundaries around data
 #'
 #' @details creates ggplot geom which plots a geom_rect given specific resolution infromation in the info field
@@ -114,13 +113,14 @@ plot_eye_heatmap <- function(x, y, weights = NULL, ...){
 #' argument.
 #'
 #' @param obj EyerObject with `obj$info$resolution` field
+#' @param add_centre if set to TRUE, adds point to the centre of the geom
 #' @param ... ggplot options for geom_rect
 #'
 #' @return ggplot geom
 #' @export
 #'
 #' @examples
-geom_eyer_monitor <- function(obj, ...){
+geom_eyer_monitor <- function(obj, add_centre = FALSE, ...){
   res <- obj$info$resolution
   if(is.null(res)){
     warning("passed EyerObject doens't have obj$info$resolution field")
@@ -132,5 +132,8 @@ geom_eyer_monitor <- function(obj, ...){
     warning("passed obj$info$resolution doesn't have valid width, height fields")
     return(list())
   }
-  return(geom_monitor_boundaries(width, height, ...))
+  ls <- list()
+  ls <- c(ls, geom_monitor_boundaries(width, height, ...))
+  if(add_centre) ls <- c(ls, geom_point(aes(x=width/2, y=height/2), size=width/250, color="red", ...))
+  return(ls)
 }

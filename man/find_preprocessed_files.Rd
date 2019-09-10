@@ -4,7 +4,7 @@
 \alias{find_preprocessed_files}
 \title{returns filepaths of preprocessed fixations and events}
 \usage{
-find_preprocessed_files(folder)
+find_preprocessed_files(folder, name = "")
 }
 \arguments{
 \item{folder}{what directory to search in? Expects one fixation and one event to be present}

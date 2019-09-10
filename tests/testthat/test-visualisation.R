@@ -1,5 +1,5 @@
 context('visualising')
-obj <- eyer
+obj <- eyer_data
 
 test_that("test plotting gaze", {
   expect_s3_class(plot_gaze(obj), "ggplot")
