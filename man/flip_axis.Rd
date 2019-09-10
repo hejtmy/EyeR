@@ -7,8 +7,6 @@
 flip_axis(obj, axis, anchor)
 }
 \arguments{
-\item{obj}{EyerObject}
-
 \item{axis}{string of which axis to flip. c("x", "y")}
 
 \item{anchor}{what is the value of new 0? Needs to be deffined}

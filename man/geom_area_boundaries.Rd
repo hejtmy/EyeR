@@ -4,19 +4,17 @@
 \alias{geom_area_boundaries}
 \title{Plots area boundaries}
 \usage{
-geom_area_boundaries(ls, alpha = 0.2, size = 1, color = "black",
+geom_area_boundaries(area, alpha = 0.2, size = 1, color = "black",
   fill = "grey20", ...)
 }
 \arguments{
-\item{ls}{list with xmin, xmax, ymin, ymax fields}
+\item{alpha}{rectangle alpha}
 
-\item{alpha}{rectangle alpha, \strong{default} is 0.2}
+\item{size}{rectangle line size}
 
-\item{size}{rectangle line size, \strong{default} is 1}
+\item{color}{rectangle color}
 
-\item{color}{rectangle color, \strong{default} is 'black'}
-
-\item{fill}{rectangle fill, \strong{default} is 'grey20'}
+\item{fill}{rectangle fill}
 
 \item{...}{optional \code{geom_rect} parameters}
 }

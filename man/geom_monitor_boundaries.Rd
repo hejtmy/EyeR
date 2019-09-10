@@ -12,11 +12,11 @@ geom_monitor_boundaries(width, height, alpha = 0, size = 1.5,
 
 \item{height}{monitor height as a numeric value}
 
-\item{alpha}{rectangle alpha, \strong{default} is 0}
+\item{alpha}{rectangle alpha}
 
-\item{size}{rectangle line size, \strong{default} is 1.5}
+\item{size}{rectangle line size}
 
-\item{color}{rectangle color, \strong{default} is red}
+\item{color}{rectangle color}
 
 \item{...}{optional \code{geom_rect} parameters}
 }

@@ -9,14 +9,15 @@ AreaObject(name, x = numeric(2), y = numeric(2))
 \arguments{
 \item{name}{name of the area}
 
-\item{x}{x limits of the area.}
+\item{x}{x limits of the area as numeric(2)}
 
-\item{y}{}
+\item{y}{y limits of the area as numeric(2)}
 }
 \description{
 Defines AreaObject
 }
 \details{
 AreaObject is a list of class area with given fields. It is used by
-plotting functions and mainly add_areas
+plotting functions and mainly add_areas.
+currently it only supports square objects
 }

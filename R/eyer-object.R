@@ -94,25 +94,34 @@ is_valid_eyer <- function(obj){
 #' Defines AreaObject
 #'
 #' @details AreaObject is a list of class area with given fields. It is used by
-#' plotting functions and mainly add_areas
+#' plotting functions and mainly add_areas.
+#' currently it only supports square objects
 #'
 #' @param name name of the area
-#' @param x x limits of the area.
-#' @param y
+#' @param x x limits of the area as numeric(2)
+#' @param y y limits of the area as numeric(2)
 #'
 #' @return
 #' @export
 #'
 #' @examples
-AreaObject <- function(name, x=numeric(2), y=numeric(2)){
+AreaObject <- function(name, x = numeric(2), y = numeric(2)){
   obj <- list()
   obj$name <- name
-  obj$x <- x
-  obj$y <- y
+  obj$type <- "square"
+  obj$points <- list()
+  obj$points$xmin <- x[1]
+  obj$points$xmax <- x[2]
+  obj$points$ymin <- y[1]
+  obj$points$ymax <- y[2]
   class(obj) <- append(class(obj), "area")
   return(obj)
 }
 
 is_valid_area <- function(obj){
+  if(!("area" %in% attributes(obj)$class)) return(FALSE)
+  ##
+  if(obj$points$xmin == obj$points$xmax) return(FALSE)
+  if(obj$points$ymin == obj$points$ymax) return(FALSE)
   return(TRUE)
 }

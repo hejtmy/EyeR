@@ -97,7 +97,7 @@ remove_out_of_bounds.data.frame <- function(df, replace, resolution){
 #' In our case, if we want the current 0,0 to become left top corner, we want to reanchor the "y" axis with 0
 #' to be at current height (e.g. 1080).
 #'
-#' @param obj EyerObject
+#' @param obj \code\link{EyerObject}}
 #' @param axis string of which axis to flip. c("x", "y")
 #' @param anchor what is the value of new 0? Needs to be deffined
 #' @return
@@ -138,7 +138,7 @@ downsample <- function(obj, n, ...){
 
 #' Downsamples eyer gaze data
 #'
-#' @param obj EyerOBject
+#' @param obj \code\link{EyerObject}}
 #' @param n picks every nth recording
 #' @param ...
 #'
@@ -158,25 +158,42 @@ downsample.data.frame <- function(df, n){
   return(df)
 }
 
-#' Add area column
-#' @details Adds new column to the fixations data frame with information about a fixation
-#' being within area bounds
+#' Add area column to object data
 #'
-#' @param df data.frame with x and y columns
-#' @param areas named list of area lists. Each area list is a list of X and y vectors
-#' of length 2. Ex: list(x=c(0,10), y=c(0,10))
+#' @details Adds new column to the fixations and gaze data frame from the area
 #'
-#' @return
+#' @param obj \code\link{EyerObject}}
+#' @param areas list or a vector of \code\link{AreaObject}}
+#'
+#' @return modified \code\link{EyerObject}} or the object back if something doesn't work
 #' @export
 #'
 #' @examples
-add_area_column <- function(df, areas){
-  df$area <- ""
-  for (area in areas){
-    if(!is_valid_area(area)) next
-    df[is_between(df$x, area$x[1], ar$x[2]) &
-       is_between(df$y, area$y[1], area$y[2]), "area"] <- area$name
+add_area_column <- function(obj, areas){
+  if(!is.eyer(obj)){
+    warning("passed object is not eyer")
+    return(obj)
   }
-  return(df)
+  for(eye_data_field in EYE_POSITION_DATA_FIELDS){
+    df <- obj$data[[eye_data_field]]
+    if(is.null(df)) next
+    df$area <- ""
+    for (area in areas){
+      if(!is_valid_area(area)) next
+      in_area <- is_in_area(df$x, df$y, area)
+      df$area[in_area] <- area$name
+    }
+    obj$data[[eye_data_field]] <- df
+  }
+  return(obj)
 }
 
+is_in_area <- function(x, y, area){
+  if(area$type == "square"){
+    return(is_in_area_square(x, y, area$points))
+  }
+}
+
+is_in_area_square <- function(x, y, points){
+  return((x >= points$xmin & x <= points$xmax) & (y >= points$ymin & y <= points$ymax))
+}

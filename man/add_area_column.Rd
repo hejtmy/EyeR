@@ -2,20 +2,13 @@
 % Please edit documentation in R/eyer-preprocessing.R
 \name{add_area_column}
 \alias{add_area_column}
-\title{Add area column}
+\title{Add area column to object data}
 \usage{
-add_area_column(df, areas)
-}
-\arguments{
-\item{df}{data.frame with x and y columns}
-
-\item{areas}{named list of area lists. Each area list is a list of X and y vectors
-of length 2. Ex: list(x=c(0,10), y=c(0,10))}
+add_area_column(obj, areas)
 }
 \description{
-Add area column
+Add area column to object data
 }
 \details{
-Adds new column to the fixations data frame with information about a fixation
-being within area bounds
+Adds new column to the fixations and gaze data frame from the area
 }

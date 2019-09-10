@@ -3,7 +3,7 @@ Type: Package
 Title: Loading and preprocessing of eyetrakcer data
 Version: 0.1.2
 Author: Lukáš "hejtmy" Hejtmánek
-Maintainer: The package maintainer <hejtmy@gmail.com>
+Maintainer: Lukáš "hejtmy" Hejtmánek <hejtmy@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
@@ -11,7 +11,7 @@ Encoding: UTF-8
 LazyData: true
 Depends:
     ggplot2
-Suggests: 
+Suggests:
     knitr,
     rmarkdown,
     testthat (>= 2.1.0),
