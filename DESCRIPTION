@@ -1,7 +1,7 @@
 Package: eyer
 Type: Package
 Title: Loading and preprocessing of eyetrakcer data
-Version: 0.1.0
+Version: 0.1.2
 Author: Lukáš "hejtmy" Hejtmánek
 Maintainer: The package maintainer <hejtmy@gmail.com>
 Description: More about what it does (maybe more than one line)

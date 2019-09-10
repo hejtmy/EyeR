@@ -8,6 +8,7 @@ output: html_document
 Eyer allows for saving data in a predefined structure and then loading them from passed folder. The package comes with both `eyer_data` object for testing and demosntrations, but also with raw data you can look at and test loading. It is generally installed into `system.file("extdata", package = "eyer")` system folder.
 
 ```{r}
+library(eyer)
 loading_folder <- system.file("extdata", package = "eyer")
 eye <- load_eyer_data(loading_folder)
 str(eye)
@@ -15,7 +16,14 @@ str(eye)
 
 The eyer object then allows us to do some quick operations and visualisations
 ```{r}
+plot_gaze(eye, downsample = 50) + geom_eyer_monitor(eye)
+```
 
+As this data comes from eyelink 1000 eyetracker, the anchor is in top left, whereas we want to plot it with 0,0 begin in the bottom left. So we needd to flip the Y axis to the 1080 value.
+
+```{r, warning=FALSE}
+eye <- flip_axis(eye, "y", 1080)
+plot_gaze(eye, downsample = 50) + geom_eyer_monitor(eye)
 ```
 
 and after we are finished, we can save the data again 
@@ -24,3 +32,10 @@ and after we are finished, we can save the data again
 save_eyer(eye, "temp", "preprocessed")
 list.files("temp")
 ```
+
+We can then load the data and continue with preprocessed flipped data
+```{r, warning=FALSE, message=FALSE}
+eye <- load_eyer_data("temp")
+plot_gaze(eye, downsample = 50) + geom_eyer_monitor(eye)
+```
+s

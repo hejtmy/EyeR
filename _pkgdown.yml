@@ -6,6 +6,7 @@ reference:
   - '`AreaObject`'
   - '`is_valid_eyer`'
   - '`load_eyer_data`'
+  - '`is.eyer`'
 - title: Preprocessing
   desc: Preprocessing of the
   contents:

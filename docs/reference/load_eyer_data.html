@@ -33,7 +33,8 @@
 <meta property="og:title" content="Loads data from a folder. Loads preprocessed events, gaze and fixations files — load_eyer_data" />
 
 <meta property="og:description" content="eyer allows saving of preprocessed data with the function eyer_save()
-this function then allows to load directly those prepared files into its structure" />
+this function then allows to load directly those prepared files into its structure. This function
+returns NULL if there is no name_eyer_info.json file found in the directory." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -64,7 +65,7 @@ this function then allows to load directly those prepared files into its structu
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eyer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -87,7 +88,7 @@ this function then allows to load directly those prepared files into its structu
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/main.html">Loading and saving</a>
+      <a href="../articles/loading-saving.html">Loading and saving</a>
     </li>
   </ul>
 </li>
@@ -115,11 +116,12 @@ this function then allows to load directly those prepared files into its structu
     <div class="ref-description">
     
     <p>eyer allows saving of preprocessed data with the function <code>eyer_save()</code>
-this function then allows to load directly those prepared files into its structure</p>
+this function then allows to load directly those prepared files into its structure. This function
+returns NULL if there is no <a href='https://www.rdocumentation.org/packages/base/topics/name'>name</a>_eyer_info.json file found in the directory.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>load_eyer_data</span>(<span class='no'>folder</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>load_eyer_data</span>(<span class='no'>folder</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,11 +130,15 @@ this function then allows to load directly those prepared files into its structu
       <th>folder</th>
       <td><p>what directory should be searcher? Not recursive</p></td>
     </tr>
+    <tr>
+      <th>name</th>
+      <td><p>name of the files to find in case there are multiple saved eyer objects in the folder</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>EyerObject with filled in data</p>
+    <p>EyerObject with filled in data or NULL if no files are found</p>
     
 
   </div>
