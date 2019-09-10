@@ -18,4 +18,9 @@ test_that("Downsampling workds", {
 
 test_that("flipping axis works", {
   expect_warning(flipped <- flip_axis(obj, "z", 5))
+  expect_null(flipped)
+  expect_silent(obj_flipped <- flip_axis(obj, "y", 1080))
+  expect_s3_class(obj_flipped, "eyer")
+  expect_silent(obj_flipped <- flip_axis(obj, "x", 1920))
+  expect_s3_class(obj_flipped, "eyer")
 })

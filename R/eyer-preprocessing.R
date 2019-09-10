@@ -113,7 +113,13 @@ flip_axis <- function(obj, axis, anchor){
     warning("can only flip x and y axes")
     return(NULL)
   }
-
+  for(position_data in EYE_POSITION_DATA_FIELDS){
+    df <- obj$data[[position_data]]
+    if(is.null(df)) next
+    df[[axis]] <- anchor - df[[axis]]
+    obj$data[[position_data]] <- df
+  }
+  return(obj)
 }
 
 #' Downsamples data

@@ -1,19 +1,21 @@
 reference:
 - title: Object Definitions
-  desc: ~
+  desc:
   contents:
   - '`EyerObject`'
+  - '`AreaObject`'
   - '`is_valid_eyer`'
   - '`load_eyer_data`'
 - title: Preprocessing
   desc: Preprocessing of the
   contents:
-  - '`add_screen_area_fixations`'
+  - '`add_area_column`'
   - '`change_resolution`'
   - '`remove_out_of_bounds`'
   - '`remove_out_of_bounds.eyer`'
   - '`downsample`'
   - '`downsample.eyer`'
+  - '`flip_axis`'
   - '`save_eyer`'
 - title: Getters
   desc:
