@@ -33,7 +33,7 @@ load_eyer_data <- function(folder, name = "", ...){
 find_preprocessed_files <- function(folder, name = ""){
   #actually search for it
   ls <- list()
-  for(field in DATA_FIELDS){
+  for(field in ALL_DATA_FIELDS){
     preprocessed_ptr <- paste0(name, "_eyer_", field)
     ls[[field]] <- find_file_or_null(folder, preprocessed_ptr)
   }

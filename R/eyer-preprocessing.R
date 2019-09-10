@@ -87,6 +87,35 @@ remove_out_of_bounds.data.frame <- function(df, replace, resolution){
   return(df)
 }
 
+#' Flips the given axis to its negative
+#'
+#' @details this function flips given axis (x or y) anchored to the anchor value.
+#'
+#' @description Some eyetrackers output its data with inversed values. E.g. Eyelink returns data with
+#' 0,0 in the left top corner, but visualisations make more sense with 0,0 being projeccted to the
+#' left bottom corner. So we neeed to "flip" the Y axis. But we also need to define the new "anchor".
+#' In our case, if we want the current 0,0 to become left top corner, we want to reanchor the "y" axis with 0
+#' to be at current height (e.g. 1080).
+#'
+#' @param obj EyerObject
+#' @param axis string of which axis to flip. c("x", "y")
+#' @param anchor what is the value of new 0? Needs to be deffined
+#' @return
+#' @export
+#'
+#' @examples
+flip_axis <- function(obj, axis, anchor){
+  if(!is.eyer(obj)){
+    warning("passed object is not eyer")
+    return(NULL)
+  }
+  if(!(axis %in% c("y", "x"))){
+    warning("can only flip x and y axes")
+    return(NULL)
+  }
+
+}
+
 #' Downsamples data
 #'
 #' @param obj object to downsample
@@ -123,24 +152,25 @@ downsample.data.frame <- function(df, n){
   return(df)
 }
 
-#' Adds new column to the fixations data frame with information about a fixation
+#' Add area column
+#' @details Adds new column to the fixations data frame with information about a fixation
 #' being within area bounds
 #'
-#' @param df_fixations fixations
-#' @param areas list of area lists. Each area list is a list of X and y vectors
+#' @param df data.frame with x and y columns
+#' @param areas named list of area lists. Each area list is a list of X and y vectors
 #' of length 2. Ex: list(x=c(0,10), y=c(0,10))
 #'
 #' @return
 #' @export
 #'
 #' @examples
-add_screen_area_fixations <- function(df_fixations, areas){
-  #TODO - this is not working
-  df_fixations$area <- ""
+add_area_column <- function(df, areas){
+  df$area <- ""
   for (area in areas){
-    df_fixations[is_between(df_fixations$x, area$x[1], ar$x[2]) &
-                   is_between(df_fixations$y, area$y[1], area$y[2]), "area"] <- area$name
+    if(!is_valid_area(area)) next
+    df[is_between(df$x, area$x[1], ar$x[2]) &
+       is_between(df$y, area$y[1], area$y[2]), "area"] <- area$name
   }
-  return(df_fixations)
+  return(df)
 }
 
