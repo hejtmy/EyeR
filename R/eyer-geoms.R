@@ -35,11 +35,16 @@ geom_monitor_boundaries <- function(width, height, alpha = 0, size = 1.5, color 
 #' @export
 #'
 #' @examples
-geom_area_boundaries <- function(area, alpha = 0.2, size = 1, color = "black", fill = "grey20", ...){
+geom_area_boundaries <- function(area, alpha = 0.01, size = 1, color = "black", fill = "grey20", ...){
   points <- area$points
+  if(area$type == "square") geoms <- geom_area_boundaries_square(points, alpha, size, color, fill, ...)
+  return(geoms)
+}
+
+geom_area_boundaries_square <- function(points, alpha, size, color, fill, ...){
   geoms <- list(geom_rect(aes(xmin=points$xmin, xmax=points$xmax, ymin=points$ymin, ymax=points$ymax),
-                        inherit.aes = FALSE, alpha = alpha,
-                        size = size, color = color, fill = fill,
-                        ...))
+                          inherit.aes = FALSE, alpha = alpha,
+                          size = size, color = color, fill = fill,
+                          ...))
   return(geoms)
 }

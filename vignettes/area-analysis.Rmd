@@ -1,0 +1,23 @@
+---
+title: "area-analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{area-analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+library(eyer)
+obj <- eyer_data
+```
+
+Area allow us to define square areas and analyse the contents.
+
+We can plot areas with the `geom_area_boundaries` function.
+
+```{r, warning=FALSE}
+center <- AreaObject("center", c(resolution$width/2 - 200, resolution$width/2 + 200), 
+                     c(resolution$height/2 - 200, resolution$height/2 + 200))
+plot_gaze(obj, downsample = 50) + geom_area_boundaries(center, alpha = 0.005, fill="blue") + geom_eyer_monitor(obj)
+```
