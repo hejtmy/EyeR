@@ -7,7 +7,7 @@
 remove_out_of_bounds(obj, replace = NULL, resolution = NULL, ...)
 }
 \arguments{
-\item{obj}{OBject}
+\item{obj}{object}
 
 \item{replace}{what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default}
 

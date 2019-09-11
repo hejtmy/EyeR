@@ -1,8 +1,8 @@
 Package: eyer
 Type: Package
 Title: Loading and preprocessing of eyetrakcer data
-Version: 0.1.2
-Author: Lukáš "hejtmy" Hejtmánek
+Version: 0.1.3
+Author: Lukáš 'hejtmy' Hejtmánek
 Maintainer: Lukáš "hejtmy" Hejtmánek <hejtmy@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.

@@ -7,7 +7,7 @@
 \method{remove_out_of_bounds}{eyer}(obj, replace, resolution)
 }
 \arguments{
-\item{obj}{OBject}
+\item{obj}{\code{\link{EyerObject}}}
 
 \item{replace}{what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default}
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is obj eyer object? — is.eyer • eyer</title>
+<title>Analyses time spent in each area — analyse_fixation_areas • eyer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Is obj eyer object? — is.eyer" />
+<meta property="og:title" content="Analyses time spent in each area — analyse_fixation_areas" />
 
-<meta property="og:description" content="Is obj eyer object?" />
+<meta property="og:description" content="the totals int he data frame do not correspond to the total row, as the NA data are omited." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,27 +112,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is obj eyer object?</h1>
+    <h1>Analyses time spent in each area</h1>
     
-    <div class="hidden name"><code>is.eyer.Rd</code></div>
+    <div class="hidden name"><code>analyse_fixation_areas.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Is obj eyer object?</p>
+    <p>the totals int he data frame do not correspond to the total row, as the NA data are omited.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>is.eyer</span>(<span class='no'>obj</span>)</pre>
+    <pre class="usage"><span class='fu'>analyse_fixation_areas</span>(<span class='no'>obj</span>, <span class='kw'>areas</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>object to check</p></td>
+      <td><p><code><a href='EyerObject.html'>EyerObject</a></code></p></td>
+    </tr>
+    <tr>
+      <th>areas</th>
+      <td><p>list of <code><a href='AreaObject.html'>AreaObject</a></code>. Only necessary if the areas haven't been added previously
+with the <code><a href='add_area_column.html'>add_area_column</a></code>. If areas are present, the column is recalculated.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>data.frame with calculated information</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>returns summative data froma with columns: area, n, duration, duration.na, ratio</p>
     
 
   </div>
@@ -140,7 +153,11 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

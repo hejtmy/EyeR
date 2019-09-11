@@ -7,6 +7,8 @@
 \method{downsample}{eyer}(obj, n, ...)
 }
 \arguments{
+\item{obj}{\code{\link{EyerObject}}}
+
 \item{n}{picks every nth recording}
 
 \item{...}{}

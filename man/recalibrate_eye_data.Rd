@@ -7,6 +7,8 @@
 recalibrate_eye_data(obj, new_zero, times = c(), raw_times = FALSE)
 }
 \arguments{
+\item{obj}{\code{\link{EyerObject}}}
+
 \item{new_zero}{numeric(2) vector in which to shift the data gets substracted from the x and y axis}
 
 \item{times}{numeric(2) vector to define which part fo the data to select}

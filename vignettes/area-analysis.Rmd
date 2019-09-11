@@ -1,5 +1,5 @@
 ---
-title: "area-analysis"
+title: "Area of interest analysis"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{area-analysis}
@@ -22,7 +22,6 @@ We can plot areas with the `geom_area_boundaries` function.
 
 ```{r, warning=FALSE}
 resolution <- obj$info$resolution
-
 center <- AreaObject("center", c(resolution$width/2 - 200, resolution$width/2 + 200), 
                      c(resolution$height/2 - 200, resolution$height/2 + 200))
 top_upper <- AreaObject("Top Upper", c(1500, 1920), c(750, 1080))
@@ -48,4 +47,16 @@ ggplot(fixations_in_areas, aes(x,y, size=duration)) + geom_point() +
   geom_area_boundaries(center, alpha = 0.005, fill="blue") +
   geom_area_boundaries(top_upper, alpha = 0.005, fill="green") +
   geom_eyer_monitor(obj) + theme_minimal()
+```
+
+## Analysis
+
+```{r}
+df <- analyse_fixation_areas(obj, list(center, top_upper))
+print(df)
+```
+
+```{r}
+df <- analyse_gaze_areas(obj, list(center, top_upper))
+print(df)
 ```

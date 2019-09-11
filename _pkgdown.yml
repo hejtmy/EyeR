@@ -24,6 +24,11 @@ reference:
   contents:
   - '`filter_times`'
   - '`filter_times.eyer`'
+- title: Analysis
+  desc: Analytical function to provide summative output
+  contents:
+  - '`analyse_gaze_areas`'
+  - '`analyse_fixation_areas`'
 - title: Visualisations
   desc:
   contents:

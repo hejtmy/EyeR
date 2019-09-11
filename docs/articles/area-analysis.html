@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>area-analysis • eyer</title>
+<title>Area of interest analysis • eyer</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="area-analysis">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Area of interest analysis">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eyer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/area-analysis.html">area-analysis</a>
+      <a href="../articles/area-analysis.html">Area of interest analysis</a>
     </li>
     <li>
       <a href="../articles/loading-saving.html">Loading and saving</a>
@@ -76,7 +76,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>area-analysis</h1>
+      <h1>Area of interest analysis</h1>
             
       
       
@@ -91,14 +91,13 @@
 <p>Area allow us to define square areas and analyse the contents.</p>
 <p>We can plot areas with the <code>geom_area_boundaries</code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">resolution &lt;-<span class="st"> </span>obj<span class="op">$</span>info<span class="op">$</span>resolution</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">center &lt;-<span class="st"> </span><span class="kw"><a href="../reference/AreaObject.html">AreaObject</a></span>(<span class="st">"center"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(resolution<span class="op">$</span>width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">200</span>, resolution<span class="op">$</span>width<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">200</span>), </a>
-<a class="sourceLine" id="cb2-4" title="4">                     <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(resolution<span class="op">$</span>height<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">200</span>, resolution<span class="op">$</span>height<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">200</span>))</a>
-<a class="sourceLine" id="cb2-5" title="5">top_upper &lt;-<span class="st"> </span><span class="kw"><a href="../reference/AreaObject.html">AreaObject</a></span>(<span class="st">"Top Upper"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1500</span>, <span class="dv">1920</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">750</span>, <span class="dv">1080</span>))</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="kw"><a href="../reference/plot_gaze.html">plot_gaze</a></span>(obj, <span class="dt">downsample =</span> <span class="dv">50</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw"><a href="../reference/geom_area_boundaries.html">geom_area_boundaries</a></span>(center, <span class="dt">alpha =</span> <span class="fl">0.005</span>, <span class="dt">fill=</span><span class="st">"blue"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="st">  </span><span class="kw"><a href="../reference/geom_area_boundaries.html">geom_area_boundaries</a></span>(top_upper, <span class="dt">alpha =</span> <span class="fl">0.005</span>, <span class="dt">fill=</span><span class="st">"green"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="st">  </span><span class="kw"><a href="../reference/geom_eyer_monitor.html">geom_eyer_monitor</a></span>(obj)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" title="2">center &lt;-<span class="st"> </span><span class="kw"><a href="../reference/AreaObject.html">AreaObject</a></span>(<span class="st">"center"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(resolution<span class="op">$</span>width<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">200</span>, resolution<span class="op">$</span>width<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">200</span>), </a>
+<a class="sourceLine" id="cb2-3" title="3">                     <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(resolution<span class="op">$</span>height<span class="op">/</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">200</span>, resolution<span class="op">$</span>height<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">200</span>))</a>
+<a class="sourceLine" id="cb2-4" title="4">top_upper &lt;-<span class="st"> </span><span class="kw"><a href="../reference/AreaObject.html">AreaObject</a></span>(<span class="st">"Top Upper"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1500</span>, <span class="dv">1920</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">750</span>, <span class="dv">1080</span>))</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw"><a href="../reference/plot_gaze.html">plot_gaze</a></span>(obj, <span class="dt">downsample =</span> <span class="dv">50</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="st">  </span><span class="kw"><a href="../reference/geom_area_boundaries.html">geom_area_boundaries</a></span>(center, <span class="dt">alpha =</span> <span class="fl">0.005</span>, <span class="dt">fill=</span><span class="st">"blue"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span><span class="kw"><a href="../reference/geom_area_boundaries.html">geom_area_boundaries</a></span>(top_upper, <span class="dt">alpha =</span> <span class="fl">0.005</span>, <span class="dt">fill=</span><span class="st">"green"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="st">  </span><span class="kw"><a href="../reference/geom_eyer_monitor.html">geom_eyer_monitor</a></span>(obj)</a></code></pre></div>
 <p><img src="area-analysis_files/figure-html/unnamed-chunk-2-1.png" width="768"></p>
 <p>And then we can add information about which area is each recording is to the gaze and fixations</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_area_column.html">add_area_column</a></span>(obj, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(center, top_upper))</a>
@@ -119,9 +118,32 @@
 <a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw"><a href="../reference/geom_area_boundaries.html">geom_area_boundaries</a></span>(top_upper, <span class="dt">alpha =</span> <span class="fl">0.005</span>, <span class="dt">fill=</span><span class="st">"green"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw"><a href="../reference/geom_eyer_monitor.html">geom_eyer_monitor</a></span>(obj) <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
 <p><img src="area-analysis_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<div id="analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#analysis" class="anchor"></a>Analysis</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/analyse_fixation_areas.html">analyse_fixation_areas</a></span>(obj, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(center, top_upper))</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(df)</a></code></pre></div>
+<pre><code>##        area   n duration duration.na     ratio
+## 1     total 378   114969           0 1.0000000
+## 2 Top Upper  82    22110           0 0.1923127
+## 3    center  99    30531           0 0.2655585</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/analyse_gaze_areas.html">analyse_gaze_areas</a></span>(obj, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(center, top_upper))</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(df)</a></code></pre></div>
+<pre><code>##        area      n     ratio
+## 1     total 130000 1.0000000
+## 2 Top Upper  23861 0.1835462
+## 3    center  33880 0.2606154</code></pre>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#analysis">Analysis</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

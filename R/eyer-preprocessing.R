@@ -32,7 +32,7 @@ change_resolution.data.frame <- function(df, original, target){
 
 #'  Removes points out of resolution boundary
 #'
-#' @param obj OBject
+#' @param obj object
 #' @param replace what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default
 #' @param resolution efined as a list with width and height in pixesls. e.g: list(width=1920, height=1080)
 #' @param ...
@@ -47,7 +47,7 @@ remove_out_of_bounds <- function(obj, replace = NULL, resolution = NULL, ...){
 
 #'  Removes points out of resolution boundary
 #'
-#' @param obj OBject
+#' @param obj \code{\link{EyerObject}}
 #' @param replace what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default
 #' @param resolution efined as a list with width and height in pixesls. e.g: list(width = 1920, height = 1080)
 #'
@@ -138,7 +138,7 @@ downsample <- function(obj, n, ...){
 
 #' Downsamples eyer gaze data
 #'
-#' @param obj \code\link{EyerObject}}
+#' @param obj \code{\link{EyerObject}}
 #' @param n picks every nth recording
 #' @param ...
 #'
@@ -163,10 +163,10 @@ downsample.data.frame <- function(df, n){
 #' @details Adds new column to the fixations and gaze data frame from the area
 #' @description The newly added column has a stirng with the name of the area, or NA_character_
 #'
-#' @param obj \code\link{EyerObject}}
-#' @param areas list of \code\link{AreaObject}}. Needs to be a list with area objects inside, otherwise it won't parse well
+#' @param obj \code{\link{EyerObject}}
+#' @param areas list of \code{\link{AreaObject}}. Needs to be a list with area objects inside, otherwise it won't parse well
 #'
-#' @return modified \code\link{EyerObject}} or the object back if something doesn't work
+#' @return modified \code{\link{EyerObject}} or the object back if something doesn't work
 #' @export
 #'
 #' @examples
@@ -193,7 +193,7 @@ add_area_column <- function(obj, areas){
 #'
 #' @details AS the eyetracking data may get shifted towards certain point,
 #'
-#' @param obj \code\link{EyerObject}}
+#' @param obj \code{\link{EyerObject}}
 #' @param new_zero numeric(2) vector in which to shift the data gets substracted from the x and y axis
 #' @param times numeric(2) vector to define which part fo the data to select
 #' @param raw_times commonly, the eyer data times are 0 based witht eh starting time being saved in `info$start_time`.
