@@ -18,7 +18,7 @@ test_that("test plotting heatmaps", {
 test_that("test plotting area boundaries", {
   area_left_bottom <- AreaObject("left-bottom", c(0,100), c(0,100))
   area_right_upper <- AreaObject("upper", c(obj$info$resolution$width-100,obj$info$resolution$width),
-                           c(obj$info$resolution$height-100,obj$info$resolution$height))
+                                 c(obj$info$resolution$height-100,obj$info$resolution$height))
   expect_silent(ggplot() + geom_area_boundaries(area_right_upper) + geom_area_boundaries(area_left_bottom))
 })
 

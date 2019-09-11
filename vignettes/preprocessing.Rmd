@@ -1,0 +1,23 @@
+---
+title: "preprocessing"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{preprocessing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(eyer)
+obj <- eyer_data
+```
+
+## Downsampling
+
+```{r}
+
+```
+
+## Flipping axes
+
+## Shifting parts of recording

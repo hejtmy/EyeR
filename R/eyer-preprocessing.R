@@ -161,9 +161,10 @@ downsample.data.frame <- function(df, n){
 #' Add area column to object data
 #'
 #' @details Adds new column to the fixations and gaze data frame from the area
+#' @description The newly added column has a stirng with the name of the area, or NA_character_
 #'
 #' @param obj \code\link{EyerObject}}
-#' @param areas list or a vector of \code\link{AreaObject}}
+#' @param areas list of \code\link{AreaObject}}. Needs to be a list with area objects inside, otherwise it won't parse well
 #'
 #' @return modified \code\link{EyerObject}} or the object back if something doesn't work
 #' @export
@@ -177,7 +178,7 @@ add_area_column <- function(obj, areas){
   for(eye_data_field in EYE_POSITION_DATA_FIELDS){
     df <- obj$data[[eye_data_field]]
     if(is.null(df)) next
-    df$area <- ""
+    df$area <- NA_character_
     for (area in areas){
       if(!is_valid_area(area)) next
       in_area <- is_in_area(df$x, df$y, area)
@@ -188,12 +189,8 @@ add_area_column <- function(obj, areas){
   return(obj)
 }
 
-is_in_area <- function(x, y, area){
-  if(area$type == "square"){
-    return(is_in_area_square(x, y, area$points))
-  }
-}
 
-is_in_area_square <- function(x, y, points){
-  return((x >= points$xmin & x <= points$xmax) & (y >= points$ymin & y <= points$ymax))
+
+shift_data <- function(obj, vec, times=c()){
+
 }

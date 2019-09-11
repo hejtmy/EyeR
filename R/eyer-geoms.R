@@ -15,8 +15,8 @@
 #' @examples
 geom_monitor_boundaries <- function(width, height, alpha = 0, size = 1.5, color = 'red', ...){
   geoms <- list(geom_rect(aes(xmin=0, xmax=width, ymin=0, ymax=height),
-                        inherit.aes = F, alpha = alpha,
-                        size = size, color = color, ...))
+                          inherit.aes = F, alpha = alpha,
+                          size = size, color = color, ...))
   return(geoms)
 }
 

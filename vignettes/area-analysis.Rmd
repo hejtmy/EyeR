@@ -19,5 +19,27 @@ We can plot areas with the `geom_area_boundaries` function.
 ```{r, warning=FALSE}
 center <- AreaObject("center", c(resolution$width/2 - 200, resolution$width/2 + 200), 
                      c(resolution$height/2 - 200, resolution$height/2 + 200))
-plot_gaze(obj, downsample = 50) + geom_area_boundaries(center, alpha = 0.005, fill="blue") + geom_eyer_monitor(obj)
+top_upper <- AreaObject("Top Upper", c(1500, 1920), c(750, 1080))
+plot_gaze(obj, downsample = 50) + 
+  geom_area_boundaries(center, alpha = 0.005, fill="blue") +
+  geom_area_boundaries(top_upper, alpha = 0.005, fill="green") +
+  geom_eyer_monitor(obj)
+```
+
+And then we can add information about which area is each recording is to the gaze and fixations
+
+```{r}
+obj <- add_area_column(obj, list(center, top_upper))
+str(obj$data$gaze)
+table(obj$data$gaze$area)
+```
+
+Any recording not in given areas is assigned `NA_character_`. We can then select only those recordings in arease.
+
+```{r}
+fixations_in_areas <- obj$data$fixations[!is.na(obj$data$fixations$area),]
+ggplot(fixations_in_areas, aes(x,y, size=duration)) + geom_point() +
+  geom_area_boundaries(center, alpha = 0.005, fill="blue") +
+  geom_area_boundaries(top_upper, alpha = 0.005, fill="green") +
+  geom_eyer_monitor(obj) + theme_minimal()
 ```

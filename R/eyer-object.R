@@ -120,7 +120,6 @@ AreaObject <- function(name, x = numeric(2), y = numeric(2)){
 
 is_valid_area <- function(obj){
   if(!("area" %in% attributes(obj)$class)) return(FALSE)
-  ##
   if(obj$points$xmin == obj$points$xmax) return(FALSE)
   if(obj$points$ymin == obj$points$ymax) return(FALSE)
   return(TRUE)
