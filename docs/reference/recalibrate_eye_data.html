@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Removes points out of resolution boundary — remove_out_of_bounds.eyer • eyer</title>
+<title>Recalibrates eyetracking data — recalibrate_eye_data • eyer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Removes points out of resolution boundary — remove_out_of_bounds.eyer" />
+<meta property="og:title" content="Recalibrates eyetracking data — recalibrate_eye_data" />
 
-<meta property="og:description" content="Removes points out of resolution boundary" />
+<meta property="og:description" content="Recalibrates eyetracking data" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,36 +112,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Removes points out of resolution boundary</h1>
+    <h1>Recalibrates eyetracking data</h1>
     
-    <div class="hidden name"><code>remove_out_of_bounds.eyer.Rd</code></div>
+    <div class="hidden name"><code>recalibrate_eye_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Removes points out of resolution boundary</p>
+    <p>Recalibrates eyetracking data</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for eyer</span>
-<span class='fu'><a href='remove_out_of_bounds.html'>remove_out_of_bounds</a></span>(<span class='no'>obj</span>, <span class='no'>replace</span>, <span class='no'>resolution</span>)</pre>
+    <pre class="usage"><span class='fu'>recalibrate_eye_data</span>(<span class='no'>obj</span>, <span class='no'>new_zero</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(), <span class='kw'>raw_times</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>obj</th>
-      <td><p>OBject</p></td>
+      <th>new_zero</th>
+      <td><p>numeric(2) vector in which to shift the data gets substracted from the x and y axis</p></td>
     </tr>
     <tr>
-      <th>replace</th>
-      <td><p>what should the out of bounds values be replaced with? if NULL, rows are delted. NULL by default</p></td>
+      <th>times</th>
+      <td><p>numeric(2) vector to define which part fo the data to select</p></td>
     </tr>
     <tr>
-      <th>resolution</th>
-      <td><p>efined as a list with width and height in pixesls. e.g: list(width = 1920, height = 1080)</p></td>
+      <th>raw_times</th>
+      <td><p>commonly, the eyer data times are 0 based witht eh starting time being saved in <code>info$start_time</code>.
+Most operations are then calculated using these 0 based timings. If raw_times is set to TRUE,
+data are filtered with ackowledging obj$info$start_time.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Eyer object with preprocessed data fields</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>AS the eyetracking data may get shifted towards certain point,</p>
     
 
   </div>
@@ -149,7 +158,11 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

@@ -5,7 +5,7 @@
 \title{Filters data between start and end time}
 \usage{
 \method{filter_times}{eyer}(obj, start, end, data_fields = c(),
-  raw_times = F, recalculate_times = F)
+  raw_times = FALSE, recalculate_times = FALSE)
 }
 \arguments{
 \item{obj}{Eyer object to filted data from}
@@ -16,10 +16,10 @@
 
 \item{data_fields}{list of data fields (in obj$data) to filter. If empty, all fields are filtered}
 
-\item{raw_times}{if T, uses obj$info$start_time to calculate times to filter.
-Useful if the data have 0 based times since start, but we want to filter based on other values. \strong{default} is FALSE}
+\item{raw_times}{if TRUE, uses obj$info$start_time to calculate times to filter.
+Useful if the data have 0 based times since start, but we want to filter based on other values.}
 
-\item{recalculate_times}{If true, recalculates times to begin at 0 again. Changes obj$info$start_time. \strong{default} is FALSE}
+\item{recalculate_times}{If true, recalculates times to begin at 0 again. Changes obj$info$start_time.}
 }
 \value{
 object with filtered data.

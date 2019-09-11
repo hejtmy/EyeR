@@ -7,6 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=6)
+```
+
 ```{r setup}
 library(eyer)
 obj <- eyer_data
@@ -14,10 +18,29 @@ obj <- eyer_data
 
 ## Downsampling
 
-```{r}
-
+```{r, warning=FALSE}
+obj_down <- downsample(obj, n = 100)
+plot_gaze(obj, color="red")
+plot_gaze(obj_down)
 ```
 
 ## Flipping axes
 
-## Shifting parts of recording
+```{r, warning=FALSE}
+obj_flipped <- flip_axis(obj, "y", 1080)
+plot_gaze(obj, downsample = 50, color="red") + geom_eyer_monitor(obj)
+plot_gaze(obj_flipped, downsample = 50) + geom_eyer_monitor(obj)
+```
+
+## Recalibrating parts of recording
+
+Let's say the eyetracking needs to be shifted a bit from time 0 till 10 seconds is a bit shifted as the participant moved their head. We can use the recalibration functionality to shift gaze and fixations data.
+
+```{r, warning=FALSE}
+obj_prep <- filter_times(obj, 0, 10000)
+new_zero <- c(100, 100)
+obj_prep_shifted <- recalibrate_eye_data(obj_prep, new_zero)
+plot_gaze(obj_prep, downsample = 0) + 
+  geom_point(data=obj_prep_shifted$data$gaze, aes(x, y), color="blue") +
+  geom_eyer_monitor(obj_prep)
+```

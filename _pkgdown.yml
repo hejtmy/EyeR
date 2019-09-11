@@ -17,6 +17,7 @@ reference:
   - '`downsample`'
   - '`downsample.eyer`'
   - '`flip_axis`'
+  - '`recalibrate_eye_data`'
   - '`save_eyer`'
 - title: Getters
   desc:

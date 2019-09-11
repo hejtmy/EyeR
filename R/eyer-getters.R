@@ -19,15 +19,15 @@ filter_times <- function(obj, start, end, ...){
 #' @param start start time (inclusive) as is in the time column
 #' @param end end time (exclusive) as is in the time column
 #' @param data_fields list of data fields (in obj$data) to filter. If empty, all fields are filtered
-#' @param raw_times if T, uses obj$info$start_time to calculate times to filter.
-#' Useful if the data have 0 based times since start, but we want to filter based on other values. **default** is FALSE
-#' @param recalculate_times If true, recalculates times to begin at 0 again. Changes obj$info$start_time. **default** is FALSE
+#' @param raw_times if TRUE, uses obj$info$start_time to calculate times to filter.
+#' Useful if the data have 0 based times since start, but we want to filter based on other values.
+#' @param recalculate_times If true, recalculates times to begin at 0 again. Changes obj$info$start_time.
 #'
 #' @return object with filtered data.
 #' @export
 #'
 #' @examples
-filter_times.eyer <- function(obj, start, end, data_fields = c(), raw_times = F, recalculate_times = F){
+filter_times.eyer <- function(obj, start, end, data_fields = c(), raw_times = FALSE, recalculate_times = FALSE){
   start_original <- start #saves for the recalculation
   if(raw_times){
     start <- start - obj$info$start_time

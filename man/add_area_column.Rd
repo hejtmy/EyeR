@@ -7,7 +7,7 @@
 add_area_column(obj, areas)
 }
 \description{
-Add area column to object data
+The newly added column has a stirng with the name of the area, or NA_character_
 }
 \details{
 Adds new column to the fixations and gaze data frame from the area

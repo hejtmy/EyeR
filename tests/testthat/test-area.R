@@ -25,4 +25,5 @@ test_that("analysis of areas works", {
   center <- AreaObject("hey", c(resolution$width/2 - 200, resolution$width/2 + 200),
                        c(resolution$height/2 - 200, resolution$height/2 + 200))
 
+
 })

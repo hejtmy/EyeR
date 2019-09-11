@@ -7,6 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=6)
+```
+
 ```{r setup, warning=FALSE, message=FALSE}
 library(eyer)
 obj <- eyer_data
@@ -17,6 +21,8 @@ Area allow us to define square areas and analyse the contents.
 We can plot areas with the `geom_area_boundaries` function.
 
 ```{r, warning=FALSE}
+resolution <- obj$info$resolution
+
 center <- AreaObject("center", c(resolution$width/2 - 200, resolution$width/2 + 200), 
                      c(resolution$height/2 - 200, resolution$height/2 + 200))
 top_upper <- AreaObject("Top Upper", c(1500, 1920), c(750, 1080))

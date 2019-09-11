@@ -86,7 +86,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/area-analysis.html">area-analysis</a>
+    </li>
+    <li>
       <a href="../articles/loading-saving.html">Loading and saving</a>
+    </li>
+    <li>
+      <a href="../articles/preprocessing.html">preprocessing</a>
     </li>
   </ul>
 </li>
@@ -119,7 +125,7 @@
 
     <pre class="usage"><span class='co'># S3 method for eyer</span>
 <span class='fu'><a href='filter_times.html'>filter_times</a></span>(<span class='no'>obj</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='kw'>data_fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
-  <span class='kw'>raw_times</span> <span class='kw'>=</span> <span class='no'>F</span>, <span class='kw'>recalculate_times</span> <span class='kw'>=</span> <span class='no'>F</span>)</pre>
+  <span class='kw'>raw_times</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>recalculate_times</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,12 +148,12 @@
     </tr>
     <tr>
       <th>raw_times</th>
-      <td><p>if T, uses obj$info$start_time to calculate times to filter.
-Useful if the data have 0 based times since start, but we want to filter based on other values. <strong>default</strong> is FALSE</p></td>
+      <td><p>if TRUE, uses obj$info$start_time to calculate times to filter.
+Useful if the data have 0 based times since start, but we want to filter based on other values.</p></td>
     </tr>
     <tr>
       <th>recalculate_times</th>
-      <td><p>If true, recalculates times to begin at 0 again. Changes obj$info$start_time. <strong>default</strong> is FALSE</p></td>
+      <td><p>If true, recalculates times to begin at 0 again. Changes obj$info$start_time.</p></td>
     </tr>
     </table>
     
@@ -170,7 +176,7 @@ Useful if the data have 0 based times since start, but we want to filter based o
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Lukáš "hejtmy" Hejtmánek.</p>
 </div>
 
 <div class="pkgdown">

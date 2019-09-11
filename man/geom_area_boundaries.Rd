@@ -4,7 +4,7 @@
 \alias{geom_area_boundaries}
 \title{Plots area boundaries}
 \usage{
-geom_area_boundaries(area, alpha = 0.2, size = 1, color = "black",
+geom_area_boundaries(area, alpha = 0.01, size = 1, color = "black",
   fill = "grey20", ...)
 }
 \arguments{

@@ -189,8 +189,35 @@ add_area_column <- function(obj, areas){
   return(obj)
 }
 
-
-
-shift_data <- function(obj, vec, times=c()){
-
+#' Recalibrates eyetracking data
+#'
+#' @details AS the eyetracking data may get shifted towards certain point,
+#'
+#' @param obj \code\link{EyerObject}}
+#' @param new_zero numeric(2) vector in which to shift the data gets substracted from the x and y axis
+#' @param times numeric(2) vector to define which part fo the data to select
+#' @param raw_times commonly, the eyer data times are 0 based witht eh starting time being saved in `info$start_time`.
+#' Most operations are then calculated using these 0 based timings. If raw_times is set to TRUE,
+#' data are filtered with ackowledging obj$info$start_time.
+#' @return Eyer object with preprocessed data fields
+#' @export
+#'
+#' @examples
+recalibrate_eye_data <- function(obj, new_zero, times=c(), raw_times = FALSE){
+  #validate new zero
+  #validate times
+  if(raw_times) times <- times - obj$info$start_time
+  for(eye_data_field in EYE_POSITION_DATA_FIELDS){
+    df <- obj$data[[eye_data_field]]
+    if(is.null(df)) next
+    if(length(times) == 0){
+      selected <- TRUE
+    } else {
+      selected <- df$time >= times[1] & df$time < times[2]
+    }
+    df$x[selected] <- df$x[selected] - new_zero[1]
+    df$y[selected] <- df$y[selected] - new_zero[2]
+    obj$data[[eye_data_field]] <- df
+  }
+  return(obj)
 }
