@@ -4,15 +4,13 @@
 \alias{filter_times.eyer}
 \title{Filters data between start and end time}
 \usage{
-\method{filter_times}{eyer}(obj, start, end, data_fields = c(),
+\method{filter_times}{eyer}(obj, times, data_fields = c(),
   raw_times = FALSE, recalculate_times = FALSE)
 }
 \arguments{
 \item{obj}{Eyer object to filted data from}
 
-\item{start}{start time (inclusive) as is in the time column}
-
-\item{end}{end time (exclusive) as is in the time column}
+\item{times}{is a dataframe or a numeric(2) start and end to filter parts of the eyetracking. If it is set, start and end are ignored}
 
 \item{data_fields}{list of data fields (in obj$data) to filter. If empty, all fields are filtered}
 
