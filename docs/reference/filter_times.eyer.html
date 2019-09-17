@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eyer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for eyer</span>
-<span class='fu'><a href='filter_times.html'>filter_times</a></span>(<span class='no'>obj</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='kw'>data_fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
+<span class='fu'><a href='filter_times.html'>filter_times</a></span>(<span class='no'>obj</span>, <span class='no'>times</span>, <span class='kw'>data_fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
   <span class='kw'>raw_times</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>recalculate_times</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -135,12 +135,8 @@
       <td><p>Eyer object to filted data from</p></td>
     </tr>
     <tr>
-      <th>start</th>
-      <td><p>start time (inclusive) as is in the time column</p></td>
-    </tr>
-    <tr>
-      <th>end</th>
-      <td><p>end time (exclusive) as is in the time column</p></td>
+      <th>times</th>
+      <td><p>is a dataframe or a numeric(2) start and end to filter parts of the eyetracking. If it is set, start and end are ignored</p></td>
     </tr>
     <tr>
       <th>data_fields</th>

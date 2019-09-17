@@ -37,7 +37,7 @@ plot_gaze(obj_flipped, downsample = 50) + geom_eyer_monitor(obj)
 Let's say the eyetracking needs to be shifted a bit from time 0 till 10 seconds is a bit shifted as the participant moved their head. We can use the recalibration functionality to shift gaze and fixations data.
 
 ```{r, warning=FALSE}
-obj_prep <- filter_times(obj, 0, 10000)
+obj_prep <- filter_times(obj, c(0, 10000))
 new_zero <- c(100, 100)
 obj_prep_shifted <- recalibrate_eye_data(obj_prep, new_zero)
 plot_gaze(obj_prep, downsample = 0) + 

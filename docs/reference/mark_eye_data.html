@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Approximates x, y resolution from given coordinates to designated — change_resolution • eyer</title>
+<title>Allows marking of eye data — mark_eye_data • eyer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Approximates x, y resolution from given coordinates to designated — change_resolution" />
+<meta property="og:title" content="Allows marking of eye data — mark_eye_data" />
 
-<meta property="og:description" content="Approximates x, y resolution from given coordinates to designated" />
+<meta property="og:description" content="Allows marking of eye data" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,41 +112,49 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Approximates x, y resolution from given coordinates to designated</h1>
+    <h1>Allows marking of eye data</h1>
     
-    <div class="hidden name"><code>change_resolution.Rd</code></div>
+    <div class="hidden name"><code>mark_eye_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Approximates x, y resolution from given coordinates to designated</p>
+    <p>Allows marking of eye data</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>change_resolution</span>(<span class='no'>obj</span>, <span class='no'>original</span>, <span class='no'>target</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>mark_eye_data</span>(<span class='no'>obj</span>, <span class='no'>mark</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(), <span class='kw'>raw_times</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>Object to do transformations on</p></td>
+      <td><p><code><a href='EyerObject.html'>EyerObject</a></code></p></td>
     </tr>
     <tr>
-      <th>original</th>
-      <td><p>defined as a list with width and height in pixesls.
-Ex: list(width=1920, height=1080)</p></td>
+      <th>mark</th>
+      <td><p>string with the name of the mark</p></td>
     </tr>
     <tr>
-      <th>target</th>
-      <td><p>defined as a list with width and height in pixesls.
-Ex: list(width=1920, height=1080)</p></td>
+      <th>times</th>
+      <td><p>numeric(2) vector to define which part of the data to select</p></td>
+    </tr>
+    <tr>
+      <th>raw_times</th>
+      <td><p>commonly, the eyer data times are 0 based witht eh starting time being saved in <code>info$start_time</code>.
+Most operations are then calculated using these 0 based timings. If raw_times is set to TRUE,
+data are filtered with ackowledging obj$info$start_time.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame with fixations with changed resolution. Can still yield out of bounds</p>
+    <p>Eyer object with preprocessed data fields</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Adds a new column of mark- allows adding erroneous recordings etc.</p>
     
 
   </div>
@@ -156,6 +164,8 @@ Ex: list(width=1920, height=1080)</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">eyer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <h2 class="hasAnchor">
 <a href="#recalibrating-parts-of-recording" class="anchor"></a>Recalibrating parts of recording</h2>
 <p>Let’s say the eyetracking needs to be shifted a bit from time 0 till 10 seconds is a bit shifted as the participant moved their head. We can use the recalibration functionality to shift gaze and fixations data.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">obj_prep &lt;-<span class="st"> </span><span class="kw"><a href="../reference/filter_times.html">filter_times</a></span>(obj, <span class="dv">0</span>, <span class="dv">10000</span>)</a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">obj_prep &lt;-<span class="st"> </span><span class="kw"><a href="../reference/filter_times.html">filter_times</a></span>(obj, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">10000</span>))</a>
 <a class="sourceLine" id="cb9-2" title="2">new_zero &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">100</span>, <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb9-3" title="3">obj_prep_shifted &lt;-<span class="st"> </span><span class="kw"><a href="../reference/recalibrate_eye_data.html">recalibrate_eye_data</a></span>(obj_prep, new_zero)</a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="kw"><a href="../reference/plot_gaze.html">plot_gaze</a></span>(obj_prep, <span class="dt">downsample =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></a>
