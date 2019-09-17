@@ -18,6 +18,7 @@ save_eyer <- function(obj, folder =".", name = "unnamed", robject = FALSE, ...){
   # Save data fields
   for(field in names(obj$data)){
     df <- obj$data[[field]]
+    if(nrow(df) < 1) next
     name_df <- paste0(name, "_eyer_", field, ".csv")
     savepath <- file.path(folder, name_df)
     write.table(df, file = savepath, sep = ";", row.names = FALSE)
