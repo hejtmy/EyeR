@@ -221,3 +221,33 @@ recalibrate_eye_data <- function(obj, new_zero, times=c(), raw_times = FALSE){
   }
   return(obj)
 }
+
+
+#' Allows marking of eye data
+#'
+#' @details Adds a new column of mark- allows adding erroneous recordings etc.
+#'
+#' @param obj \code{\link{EyerObject}}
+#' @param mark string with the name of the mark
+#' @param times numeric(2) vector to define which part of the data to select
+#' @param raw_times commonly, the eyer data times are 0 based witht eh starting time being saved in `info$start_time`.
+#' Most operations are then calculated using these 0 based timings. If raw_times is set to TRUE,
+#' data are filtered with ackowledging obj$info$start_time.
+#'
+#' @return Eyer object with preprocessed data fields
+#'
+#' @export
+#'
+#' @examples
+mark_eye_data <- function(obj, mark, times=c(), raw_times = FALSE){
+  if(raw_times) times <- times - obj$info$start_time
+  for(eye_data_field in EYE_POSITION_DATA_FIELDS){
+    df <- obj$data[[eye_data_field]]
+    if(is.null(df)) next
+    if(!("mark" %in% colnames(df))) df$mark <- ""
+    selected <- df$time >= times[1] & df$time < times[2]
+    df$mark[selected] <- mark
+    obj$data[[eye_data_field]] <- df
+  }
+  return(obj)
+}
