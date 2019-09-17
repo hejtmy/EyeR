@@ -27,10 +27,18 @@ test_that("flipping axis works", {
 })
 
 test_that("recalibrating data works", {
-  expect_silent(obj_prep <- recalibrate_eye_data(obj, c(10,10)))
+  expect_silent(obj_prep <- recalibrate_eye_data(obj, c(100,100)))
   expect_s3_class(obj_prep, "eyer")
+  expect_gt(mean(obj$data$gaze$x, na.rm=TRUE), mean(obj_prep$data$gaze$x, na.rm=TRUE))
+  expect_gt(mean(obj$data$gaze$y, na.rm=TRUE), mean(obj_prep$data$gaze$y, na.rm=TRUE))
+  expect_silent(obj_prep <- recalibrate_eye_data(obj, c(-100, -100)))
+  expect_s3_class(obj_prep, "eyer")
+  expect_lt(mean(obj$data$gaze$x, na.rm=TRUE), mean(obj_prep$data$gaze$x, na.rm=TRUE))
+  expect_lt(mean(obj$data$gaze$y, na.rm=TRUE), mean(obj_prep$data$gaze$y, na.rm=TRUE))
+
   expect_silent(obj_prep <- recalibrate_eye_data(obj, c(10,10), times=c(0, 50)))
   expect_s3_class(obj_prep, "eyer")
+  expect_gt(mean(obj$data$gaze$x, na.rm=TRUE), mean(obj_prep$data$gaze$x, na.rm=TRUE))
   expect_silent(obj_prep2 <- recalibrate_eye_data(obj, c(10,10), times=c(0, 50),
                                                   raw_times = F))
   expect_equal(obj_prep, obj_prep2)
